@@ -1,0 +1,6 @@
+data/
+previews/
+__pycache__/
+*.sqlite
+*.pyc
+.env

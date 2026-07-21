@@ -1,0 +1,791 @@
+const searchInput = document.getElementById('searchInput');
+const resultsContainer = document.getElementById('results');
+const statsContainer = document.getElementById('stats');
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modalBody');
+const modalTitle = document.getElementById('modalTitle');
+const modalOpenOriginal = document.getElementById('modalOpenOriginal');
+const modalClose = document.getElementById('modalClose');
+const inputs = ['searchInput', 'searchSeiban', 'searchReq', 'searchProduct', 'searchPart', 'searchDrawing'];
+
+window.openAIConfirm = async function(bom) {
+    if (!confirm('このBOMレイアウトを正しいものとして確定しますか？')) return;
+    try {
+        const res = await fetch('/api/ai_confirm', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(bom)
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+            alert('確定しました！');
+            location.reload();
+        } else {
+            alert('エラー: ' + data.message);
+        }
+    } catch(e) {
+        alert('エラー: ' + e);
+    }
+}
+
+window.registerProductName = async function(pCode) {
+    const newName = prompt(`部品番号「${pCode}」の正式な製品名を入力してください\n(例: ${pCode} 図:KF31-14-13)`);
+    if (!newName) return;
+    
+    try {
+        const res = await fetch('/api/register_product', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ product_code: pCode, name: newName })
+        });
+        const data = await res.json();
+        if (data.status === 'ok') {
+            alert('登録しました！');
+            location.reload();
+        } else {
+            alert('エラーが発生しました: ' + data.message);
+        }
+    } catch(e) {
+        alert('通信エラー: ' + e);
+    }
+};
+
+let currentTab = 'product';
+let lastGroups = [];
+
+window.switchTab = function(tabName) {
+    currentTab = tabName;
+    document.getElementById('tabProduct').classList.toggle('active', tabName === 'product');
+    document.getElementById('tabRequest').classList.toggle('active', tabName === 'request');
+    document.getElementById('tabGlobal').classList.toggle('active', tabName === 'global');
+    document.getElementById('globalFilters').style.display = tabName === 'global' ? 'flex' : 'none';
+    
+    const state = {
+        q: document.getElementById('searchInput').value.trim(),
+        seiban: document.getElementById('searchSeiban').value.trim(),
+        req_no: document.getElementById('searchReq').value.trim(),
+        product: document.getElementById('searchProduct').value.trim(),
+        part_no: document.getElementById('searchPart').value.trim(),
+        drawing_no: document.getElementById('searchDrawing').value.trim()
+    };
+    // Re-render based on current tab
+    renderResults(lastGroups, state);
+};
+let searchTimeout;
+inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) {
+        el.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch();
+            }, 300);
+        });
+    }
+});
+
+// Helper to escape HTML and highlight search tokens
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function highlight(str, tokens) {
+    let esc = escapeHtml(str);
+    if (!esc || tokens.length === 0) return esc;
+    
+    tokens.forEach(t => {
+        if (t.length < 2) return; // Don't highlight single characters
+        try {
+            const regex = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+            esc = esc.replace(regex, match => `<mark>${match}</mark>`);
+        } catch (e) {}
+    });
+    return esc;
+}
+
+// Perform search via API
+async function performSearch() {
+    const seiban = document.getElementById('searchSeiban').value.trim();
+    const req = document.getElementById('searchReq').value.trim();
+    const product = document.getElementById('searchProduct').value.trim();
+    const part = document.getElementById('searchPart').value.trim();
+    const drawing = document.getElementById('searchDrawing').value.trim();
+    const q = document.getElementById('searchInput').value.trim();
+
+    if (!q && !seiban && !req && !product && !part && !drawing) {
+        document.getElementById('results').innerHTML = '<div class="empty-state">検索条件を入力してください</div>';
+        return;
+    }
+
+    const params = new URLSearchParams();
+    if(q) params.append('q', q);
+    if(seiban) params.append('seiban', seiban);
+    if(req) params.append('req_no', req);
+    if(product) params.append('product', product);
+    if(part) params.append('part_no', part);
+    if(drawing) params.append('drawing_no', drawing);
+
+    try {
+        const response = await fetch(`/api/search?${params.toString()}`);
+        const data = await response.json();
+        lastGroups = data.results;
+        const state = { q, seiban, req_no: req, product, part_no: part, drawing_no: drawing };
+        renderResults(data.results, state);
+    } catch (err) {
+        console.error("Search error:", err);
+        resultsContainer.innerHTML = '<div style="color:var(--danger)">検索エラーが発生しました</div>';
+    }
+}
+
+// Generate tag chips for recursive search
+function createTag(text) {
+    if (!text) return '';
+    return `<span class="tag" onclick="triggerTagSearch('${text.replace(/'/g, "\\'")}')">${escapeHtml(text)}</span>`;
+}
+
+window.triggerTagSearch = function(keyword) {
+    document.getElementById('searchInput').value = keyword;
+    document.getElementById('searchSeiban').value = '';
+    document.getElementById('searchReq').value = '';
+    document.getElementById('searchProduct').value = '';
+    document.getElementById('searchPart').value = '';
+    document.getElementById('searchDrawing').value = '';
+    performSearch();
+};
+
+// Render the UI
+function renderResults(groups, state) {
+    let tokens = Object.values(state).filter(x => x).join(' ').split(/\s+/).filter(x => x);
+    
+    if (!groups || groups.length === 0) {
+        statsContainer.textContent = '該当するデータがありません';
+        resultsContainer.innerHTML = '';
+        return;
+    }
+
+    if (currentTab === 'product') {
+        renderProductSearch(groups, tokens);
+    } else if (currentTab === 'request') {
+        renderRequestSearch(groups, tokens);
+    } else {
+        renderGlobalSearch(groups, tokens, state);
+    }
+}
+
+function renderProductSearch(groups, tokens) {
+    let html = '';
+    statsContainer.textContent = `${groups.length} 製品箱が見つかりました`;
+
+    groups.forEach(group => {
+        const p = group.product || {};
+        const isUnclassified = !p.product_code;
+        const pCode = p.product_code || '未分類';
+        let titleText = pCode;
+        if (p.name && p.name !== '未登録部品' && p.name !== '未登録製品(依頼書)') {
+            titleText = p.name;
+            if (!titleText.includes(pCode)) {
+                titleText = `${pCode} ${titleText}`;
+            }
+        } else if (p.name) {
+            titleText = `${pCode} (${p.name})`;
+        }
+        
+        const pAlias = p.alias ? `<p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: #cbd5e1;">別名: ${highlight(p.alias, tokens)}</p>` : '';
+        
+        let boxHtml = `
+            <div class="product-box">
+                <div class="product-header">
+                    <h2 class="product-title">
+                        ${isUnclassified ? '📦 未分類の書類' : `📦 製品: ${highlight(titleText, tokens)}`}
+                        ${group.seibans && group.seibans.length ? group.seibans.map(s => `<span class="badge badge-seiban">製番: ${s}</span>`).join('') : ''}
+                    </h2>
+                    ${isUnclassified ? `<span class="badge badge-unclassified">未分類</span>` : ''}
+                    ${(p.name === '未登録部品' || p.name === '未登録製品(依頼書)') ? `<button class="btn btn-secondary" style="margin-left: 1rem; padding: 2px 8px; font-size: 0.85rem;" onclick="registerProductName('${pCode}')">製品名を登録する</button>` : ''}
+                    ${pAlias}
+                </div>
+        `;
+
+        // Render BOMs
+        if (group.boms && group.boms.length > 0) {
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📋 BOM (${group.boms.length}件)</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-inner">
+            `;
+            group.boms.forEach(b => {
+                let compsHtml = '';
+                if (b.components && b.components.length > 0) {
+                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                    if (b.layout_ok) {
+                        b.components.forEach(c => {
+                            let isRedText = c.role === '【特記・赤字】';
+                            let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
+                            compsHtml += `<tr style="${style}">
+                                <td>${highlight(c.role, tokens)}</td>
+                                <td>${createTag(c.part_no)}</td>
+                                <td>${highlight(c.note, tokens)}</td>
+                            </tr>`;
+                        });
+                    } else {
+                        compsHtml += `<tr><td colspan="3"><pre style="white-space:pre-wrap">${escapeHtml(b.components)}</pre></td></tr>`;
+                    }
+                    compsHtml += `</table></div>`;
+                }
+
+                boxHtml += `
+                    <div class="item-card">
+                        <h4>BOM: ${escapeHtml(b.file.split('/').pop())} 
+                            ${b.layout_ok ? '' : '<span class="badge badge-warn">例外レイアウト・要確認</span>'}
+                        </h4>
+                        ${b.ref_requests ? `<div>関連依頼: ${b.ref_requests.map(r => createTag('#'+r)).join(' ')}</div>` : ''}
+                        ${compsHtml}
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${b.file ? `<a href="/${b.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                            ${!b.layout_ok ? `<button class="btn btn-secondary" style="border:1px solid var(--danger);color:var(--danger)" onclick='openAIConfirm(${JSON.stringify(b)})'>AI解析を確定</button>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        // Render Requests
+        if (group.requests && group.requests.length > 0) {
+            // Sort requests descending
+            group.requests.sort((a, b) => {
+                const numA = parseInt(a.request_no) || 0;
+                const numB = parseInt(b.request_no) || 0;
+                return numB - numA;
+            });
+            
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📝 加工依頼書 (${group.requests.length}件)</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-inner">
+            `;
+            group.requests.forEach(r => {
+                boxHtml += `
+                    <div class="item-card">
+                        <h4>依頼書 #${r.request_no} ${highlight(r.hinmei, tokens)}</h4>
+                        <div class="table-wrap">
+                            <table>
+                                <tr><th>発行日</th><td>${escapeHtml(r.issue_date)}</td></tr>
+                                <tr><th>数量</th><td>${escapeHtml(r.qty)}</td></tr>
+                                <tr><th>生地色</th><td>${highlight(r.kiji, tokens)}</td></tr>
+                                <tr><th>用途</th><td>${highlight(r.yoto, tokens)}</td></tr>
+                                <tr><th>納期</th><td>${escapeHtml(r.noki || r.noki_raw)}</td></tr>
+                                <tr><th>出荷先</th><td>${highlight(r.dest, tokens)}</td></tr>
+                                <tr><th>規格</th><td><pre style="margin:0;font-family:inherit;white-space:pre-wrap">${highlight(r.spec, tokens)}</pre></td></tr>
+                                <tr><th>備考</th><td><pre style="margin:0;font-family:inherit;white-space:pre-wrap">${highlight(r.biko, tokens)}</pre></td></tr>
+                            </table>
+                        </div>
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${r.file ? `<a href="/${r.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        // Render Inspections
+        if (group.inspections && group.inspections.length > 0) {
+             boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>✅ 検査証 (${group.inspections.length}件)</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-inner">
+            `;
+            group.inspections.forEach(i => {
+                boxHtml += `
+                    <div class="item-card">
+                        <h4>${escapeHtml(i.file_path.split('/').pop())}</h4>
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${i.file_path ? `<a href="/${i.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+        
+        // Render Photos
+        if (group.photos && group.photos.length > 0) {
+             boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📸 写真 (${group.photos.length}件)</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-inner">
+            `;
+            group.photos.forEach(p => {
+                boxHtml += `
+                    <div class="item-card">
+                        <h4>${escapeHtml(p.file_path.split('/').pop())}</h4>
+                        <img src="/${p.file_path}" style="max-width:100%;border-radius:4px;margin-bottom:0.5rem">
+                        <div class="action-bar">
+                            ${p.file_path ? `<a href="/${p.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+        
+        // Render Drawings
+        if (group.drawings && group.drawings.length > 0) {
+            boxHtml += `
+               <div class="section">
+                   <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                       <span>📐 図面 (${group.drawings.length}件)</span>
+                   </div>
+                   <div class="section-content">
+                       <div class="section-inner">
+           `;
+           group.drawings.forEach(d => {
+               boxHtml += `
+                   <div class="item-card">
+                       <h4>${escapeHtml(d.file_path.split('/').pop())}</h4>
+                       <div class="action-bar">
+                           ${d.previews && d.previews.length > 0 && d.previews[0] !== 'previews/dummy_0.png' ? `<button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>` : ''}
+                           ${d.file_path ? `<a href="/${d.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">ダウンロード / 開く</a>` : ''}
+                       </div>
+                   </div>
+               `;
+           });
+           boxHtml += `</div></div></div>`;
+       }
+
+        boxHtml += `</div>`; // Close product box
+        html += boxHtml;
+    });
+
+    resultsContainer.innerHTML = html;
+}
+
+function renderRequestSearch(groups, tokens) {
+    let html = '';
+    let reqBoxes = [];
+
+    // Map to group by Request
+    groups.forEach(g => {
+        if (g.requests && g.requests.length > 0) {
+            g.requests.forEach(req => {
+                reqBoxes.push({
+                    request: req,
+                    product: g.product,
+                    boms: g.boms || [],
+                    inspections: g.inspections || [],
+                    photos: g.photos || [],
+                    drawings: g.drawings || []
+                });
+            });
+        }
+    });
+
+    // Sort reqBoxes by request_no descending
+    reqBoxes.sort((a, b) => {
+        const numA = parseInt(a.request.request_no) || 0;
+        const numB = parseInt(b.request.request_no) || 0;
+        return numB - numA;
+    });
+
+    statsContainer.textContent = `加工依頼書: ${reqBoxes.length}件見つかりました`;
+
+    if (reqBoxes.length === 0) {
+        resultsContainer.innerHTML = '<div class="empty-state">該当する加工依頼書がありません</div>';
+        return;
+    }
+
+    reqBoxes.forEach(box => {
+        const r = box.request;
+        let boxHtml = `
+            <div class="product-group">
+                <div class="group-header">
+                    <h2>📄 依頼No: ${highlight(r.request_no, tokens)} ${r.seiban ? `(製番: ${highlight(r.seiban, tokens)})` : ''}</h2>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; color: #cbd5e1;">品名: ${highlight(r.hinmei, tokens)} | サイズ: ${escapeHtml(r.size)}</p>
+                </div>
+                <div class="group-content">
+                    <div class="item-card" style="border: 2px solid var(--primary); margin-bottom: 1rem;">
+                        <h4>加工依頼書: ${escapeHtml(r.file.split('/').pop())}</h4>
+                        <div class="table-wrap" style="margin-bottom:0.5rem">
+                            <table>
+                                <tr><th>品名</th><td>${highlight(r.hinmei, tokens)}</td><th>数量</th><td>${highlight(r.qty, tokens)}</td></tr>
+                                <tr><th>生地</th><td>${highlight(r.kiji, tokens)}</td><th>用途</th><td>${highlight(r.yoto, tokens)}</td></tr>
+                                <tr><th>仕様</th><td colspan="3">${highlight(r.spec, tokens)}</td></tr>
+                                <tr><th>備考</th><td colspan="3">${highlight(r.biko, tokens)}</td></tr>
+                            </table>
+                        </div>
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${r.file ? `<a href="/${r.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                        </div>
+                    </div>
+        `;
+
+        // Render related BOMs
+        if (box.boms.length > 0) {
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📋 関連BOM (${box.boms.length}件)</span>
+                    </div>
+                    <div class="section-content"><div class="section-inner">
+            `;
+            box.boms.forEach(b => {
+                let compsHtml = '';
+                if (b.components && b.components.length > 0) {
+                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                    if (b.layout_ok) {
+                        b.components.forEach(c => {
+                            let isRedText = c.role === '【特記・赤字】';
+                            let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
+                            compsHtml += `<tr style="${style}">
+                                <td>${highlight(c.role, tokens)}</td>
+                                <td>${createTag(c.part_no)}</td>
+                                <td>${highlight(c.note, tokens)}</td>
+                            </tr>`;
+                        });
+                    } else {
+                        compsHtml += `<tr><td colspan="3"><pre style="white-space:pre-wrap">${escapeHtml(b.components)}</pre></td></tr>`;
+                    }
+                    compsHtml += `</table></div>`;
+                }
+
+                boxHtml += `
+                    <div class="item-card">
+                        <h4>BOM: ${escapeHtml(b.file.split('/').pop())} 
+                            ${b.layout_ok ? '' : '<span class="badge badge-warn">例外レイアウト・要確認</span>'}
+                        </h4>
+                        ${compsHtml}
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${b.file ? `<a href="/${b.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        // Render related Inspections
+        if (box.inspections.length > 0) {
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>🔍 関連検査証 (${box.inspections.length}件)</span>
+                    </div>
+                    <div class="section-content"><div class="section-inner" style="display:flex; flex-wrap:wrap; gap:1rem">
+            `;
+            box.inspections.forEach(i => {
+                boxHtml += `
+                    <div class="item-card" style="flex:1; min-width:250px">
+                        <h4>${escapeHtml(i.file_path.split('/').pop())}</h4>
+                        <div class="action-bar">
+                            <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                            ${i.file_path ? `<a href="/${i.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        // Render related Photos
+        if (box.photos.length > 0) {
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📷 関連写真・その他 (${box.photos.length}件)</span>
+                    </div>
+                    <div class="section-content"><div class="section-inner" style="display:flex; flex-wrap:wrap; gap:1rem">
+            `;
+            box.photos.forEach(p => {
+                boxHtml += `
+                    <div class="item-card" style="flex:1; min-width:250px">
+                        <h4>${escapeHtml(p.file_path.split('/').pop())}</h4>
+                        <img src="/${p.file_path.split('/').map(encodeURIComponent).join('/')}" style="max-width:100%; border-radius:4px; margin-bottom:0.5rem">
+                        <div class="action-bar">
+                            ${p.file_path ? `<a href="/${p.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        // Render related Drawings
+        if (box.drawings.length > 0) {
+            boxHtml += `
+                <div class="section">
+                    <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                        <span>📐 関連図面 (${box.drawings.length}件)</span>
+                    </div>
+                    <div class="section-content"><div class="section-inner" style="display:flex; flex-wrap:wrap; gap:1rem">
+            `;
+            box.drawings.forEach(d => {
+                boxHtml += `
+                    <div class="item-card" style="flex:1; min-width:250px">
+                        <h4>${escapeHtml(d.file_path.split('/').pop())}</h4>
+                        <div class="action-bar">
+                            ${d.previews && d.previews.length > 0 && d.previews[0] !== 'previews/dummy_0.png' ? `<button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>` : ''}
+                            ${d.file_path ? `<a href="/${d.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">ダウンロード / 開く</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            boxHtml += `</div></div></div>`;
+        }
+
+        boxHtml += `</div></div>`;
+        html += boxHtml;
+    });
+
+    resultsContainer.innerHTML = html;
+}
+
+function renderGlobalSearch(groups, tokens, state) {
+    let html = '';
+    
+    // Flatten all data
+    let allBoms = [];
+    let allReqs = [];
+    let allInsps = [];
+    let allPhotos = [];
+    let allDrawings = [];
+    
+    groups.forEach(g => {
+        if(g.boms) allBoms = allBoms.concat(g.boms.map(b => ({...b, _product: g.product})));
+        if(g.requests) allReqs = allReqs.concat(g.requests.map(r => ({...r, _product: g.product})));
+        if(g.inspections) allInsps = allInsps.concat(g.inspections.map(i => ({...i, _product: g.product})));
+        if(g.photos) allPhotos = allPhotos.concat(g.photos.map(p => ({...p, _product: g.product})));
+        if(g.drawings) allDrawings = allDrawings.concat(g.drawings.map(d => ({...d, _product: g.product})));
+    });
+
+    // Apply strict filtering based on inputs
+    if (state.req) {
+        const sReq = state.req.toLowerCase();
+        allBoms = allBoms.filter(b => b.ref_requests && b.ref_requests.some(r => r.toLowerCase().includes(sReq)));
+        allReqs = allReqs.filter(r => r.request_no && String(r.request_no).toLowerCase().includes(sReq));
+        allInsps = [];
+        allPhotos = [];
+    }
+
+    if (state.part) {
+        const sPart = state.part.toLowerCase();
+        allBoms = allBoms.filter(b => b.components && b.components.some(c => c.part_no && c.part_no.toLowerCase().includes(sPart)));
+        allReqs = [];
+        allInsps = [];
+        allPhotos = [];
+    }
+
+    // Sort requests by request_no descending
+    allReqs.sort((a, b) => {
+        const numA = parseInt(a.request_no) || 0;
+        const numB = parseInt(b.request_no) || 0;
+        return numB - numA;
+    });
+
+    const showBom = document.getElementById('filterBom').checked;
+    const showReq = document.getElementById('filterReq').checked;
+    const showInsp = document.getElementById('filterInsp').checked;
+    const showPhoto = document.getElementById('filterPhoto').checked;
+    const showDrawing = document.getElementById('filterDrawing').checked;
+
+    let items = [];
+    if (showBom) items = items.concat(allBoms.map(x => ({...x, _type: 'bom'})));
+    if (showReq) items = items.concat(allReqs.map(x => ({...x, _type: 'req'})));
+    if (showInsp) items = items.concat(allInsps.map(x => ({...x, _type: 'insp'})));
+    if (showPhoto) items = items.concat(allPhotos.map(x => ({...x, _type: 'photo'})));
+    if (showDrawing) items = items.concat(allDrawings.map(x => ({...x, _type: 'drawing'})));
+
+    let totalHits = 0;
+    if (showBom) totalHits += allBoms.length;
+    if (showReq) totalHits += allReqs.length;
+    if (showInsp) totalHits += allInsps.length;
+    if (showPhoto) totalHits += allPhotos.length;
+    if (showDrawing) totalHits += allDrawings.length;
+
+    statsContainer.textContent = `全体で ${totalHits} 件ヒットしました`;
+
+    // Render BOMs Flat
+    if (showBom && allBoms.length > 0) {
+        html += `<div class="flat-section"><h3>📋 BOM一覧 (${allBoms.length}件)</h3>`;
+        allBoms.forEach(b => {
+            let compsHtml = '';
+            if (b.components && b.components.length > 0) {
+                compsHtml = `<div class="table-wrap" style="margin-bottom:1rem"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                b.components.forEach(c => {
+                    let isRedText = c.role === '【特記・赤字】';
+                    let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
+                    compsHtml += `<tr style="${style}">
+                        <td>${highlight(c.role, tokens)}</td>
+                        <td>${createTag(c.part_no)}</td>
+                        <td>${highlight(c.note, tokens)}</td>
+                    </tr>`;
+                });
+                compsHtml += `</table></div>`;
+            }
+            html += `
+                <div class="item-card">
+                    <h4>${escapeHtml(b.file.split('/').pop())}</h4>
+                    <p style="margin:0 0 0.5rem 0; font-size:0.85rem; color:var(--text-muted)">
+                        製番: ${highlight(b.seiban, tokens)} | 品名: ${highlight(b.hinmei, tokens)}
+                    </p>
+                    ${compsHtml}
+                    <div class="action-bar">
+                        <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                        ${b.file ? `<a href="/${b.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    }
+
+    // Render Requests Flat
+    if (showReq && allReqs.length > 0) {
+        html += `<div class="flat-section"><h3>📄 加工依頼書一覧 (${allReqs.length}件)</h3>`;
+        allReqs.forEach(r => {
+            html += `
+                <div class="item-card">
+                    <h4>${escapeHtml(r.file.split('/').pop())}</h4>
+                    <p style="margin:0 0 0.5rem 0; font-size:0.85rem; color:var(--text-muted)">
+                        依頼No: ${highlight(r.request_no, tokens)} | 製番: ${highlight(r.seiban, tokens)}
+                    </p>
+                    <div class="table-wrap" style="margin-bottom:0.5rem">
+                        <table>
+                            <tr><th>品名</th><td>${highlight(r.hinmei, tokens)}</td><th>数量</th><td>${highlight(r.qty, tokens)}</td></tr>
+                            <tr><th>生地</th><td>${highlight(r.kiji, tokens)}</td><th>用途</th><td>${highlight(r.yoto, tokens)}</td></tr>
+                            <tr><th>仕様</th><td colspan="3">${highlight(r.spec, tokens)}</td></tr>
+                            <tr><th>備考</th><td colspan="3">${highlight(r.biko, tokens)}</td></tr>
+                        </table>
+                    </div>
+                    <div class="action-bar">
+                        <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                        ${r.file ? `<a href="/${r.file.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    }
+
+    // Render Inspections Flat
+    if (showInsp && allInsps.length > 0) {
+        html += `<div class="flat-section"><h3>🔍 検査証一覧 (${allInsps.length}件)</h3><div style="display:flex; flex-wrap:wrap; gap:1rem">`;
+        allInsps.forEach(i => {
+            html += `
+                <div class="item-card" style="flex:1; min-width:300px">
+                    <h4>${escapeHtml(i.file_path.split('/').pop())}</h4>
+                    <div class="action-bar">
+                        <button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>
+                        ${i.file_path ? `<a href="/${i.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div></div>`;
+    }
+
+    // Render Photos Flat
+    if (showPhoto && allPhotos.length > 0) {
+        html += `<div class="flat-section"><h3>📷 写真・その他一覧 (${allPhotos.length}件)</h3><div style="display:flex; flex-wrap:wrap; gap:1rem">`;
+        allPhotos.forEach(p => {
+            const pName = p._product && p._product.name ? ` (${p._product.name})` : '';
+            const pCode = p._product ? p._product.product_code : '未分類';
+            html += `
+                <div class="item-card" style="flex:1; min-width:300px">
+                    <h4>${escapeHtml(p.file_path.split('/').pop())}</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin: 0 0 0.5rem 0;">関連製品: ${pCode}${pName}</p>
+                    <img src="/${p.file_path.split('/').map(encodeURIComponent).join('/')}?t=${Date.now()}" style="max-width:100%; border-radius:4px; margin-bottom:0.5rem">
+                    <div class="action-bar">
+                        ${p.file_path ? `<a href="/${p.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">開く</a>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div></div>`;
+    }
+    
+    // Render Drawings Flat
+    if (showDrawing && allDrawings.length > 0) {
+        html += `<div class="flat-section"><h3>📐 図面一覧 (${allDrawings.length}件)</h3><div style="display:flex; flex-wrap:wrap; gap:1rem">`;
+        allDrawings.forEach(d => {
+            const pName = d._product && d._product.name ? ` (${d._product.name})` : '';
+            const pCode = d._product ? d._product.product_code : '未分類';
+            html += `
+                <div class="item-card" style="flex:1; min-width:250px">
+                    <h4>${escapeHtml(d.file_path.split('/').pop())}</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin: 0 0 0.5rem 0;">関連製品: ${pCode}${pName}</p>
+                    <div class="action-bar">
+                        ${d.previews && d.previews.length > 0 && d.previews[0] !== 'previews/dummy_0.png' ? `<button class="btn btn-primary" onclick=\'openPreview(, )\'>プレビュー</button>` : ''}
+                        ${d.file_path ? `<a href="/${d.file_path.split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">ダウンロード / 開く</a>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div></div>`;
+    }
+
+    if (html === '') {
+        html = '<div class="empty-state">チェックされた項目に該当するデータがありません</div>';
+    }
+    
+    resultsContainer.innerHTML = html;
+}
+
+// Modal handling
+window.openPreview = function(previews, originalFile) {
+    modalTitle.textContent = originalFile.split('/').pop();
+    const encodedOriginal = originalFile.split('/').map(encodeURIComponent).join('/');
+    modalOpenOriginal.href = "/" + encodedOriginal;
+    modalOpenOriginal.style.display = 'inline-flex';
+    
+    if (!previews || previews.length === 0) {
+        modalBody.innerHTML = '<div style="text-align:center;padding:2rem">プレビュー画像がありません（PDF変換待ち、または未生成です）</div>';
+    } else {
+        modalBody.innerHTML = previews.map(p => {
+            const encodedPath = p.split('/').map(encodeURIComponent).join('/');
+            return `<img src="/${encodedPath}" class="preview-img">`;
+        }).join('');
+    }
+    
+    modal.classList.add('active');
+};
+
+
+modalClose.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') modal.classList.remove('active');
+});
+
+// Initial load
+performSearch('');

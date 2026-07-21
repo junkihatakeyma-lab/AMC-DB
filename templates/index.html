@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部品DB</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/tabs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="glass-header">
+        <div class="header-content">
+            <h1>PartsSearch<span class="highlight">DB</span></h1>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px; width: 100%;">
+                <div class="advanced-search" style="margin-top: 0;">
+                    <div class="search-field">
+                        <label>総合検索</label>
+                        <div class="input-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="全体からキーワード検索" autofocus>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>製番</label>
+                        <input type="text" id="searchSeiban" placeholder="例: 2606-0131">
+                    </div>
+                    <div class="search-field">
+                        <label>依頼No</label>
+                        <input type="text" id="searchReq" placeholder="例: 11540">
+                    </div>
+                    <div class="search-field">
+                        <label>会社名</label>
+                        <input type="text" id="searchCompany" placeholder="例: テクニクス">
+                    </div>
+                    <div class="search-field">
+                        <label>商品名・品名</label>
+                        <input type="text" id="searchProduct" placeholder="例: 5F137B">
+                    </div>
+                    <div class="search-field" style="display: flex; flex-direction: row; align-items: flex-end;">
+                        <button class="btn btn-primary" onclick="performSearch()" style="height: 42px; padding: 0 24px; font-weight: bold; border-radius: 8px; white-space: nowrap;">検索</button>
+                        <button class="btn btn-secondary" onclick="clearAllSearch()" style="height: 42px; padding: 0 16px; margin-left: 8px; border-radius: 8px; white-space: nowrap;">クリア</button>
+                    </div>
+                </div>
+                
+                <div class="search-field" id="searchPartContainer" style="width: 100%; margin: 0;">
+                    <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        部品番号 (AND検索)
+                        <button type="button" class="btn btn-secondary" id="addPartBtn" onclick="addPartInput()" style="padding: 2px 8px; font-size: 14px; border-radius: 4px; height: auto;">＋追加 (最大5つ)</button>
+                    </label>
+                    <div id="partInputsList" style="display: flex; flex-direction: row; gap: 8px; width: 100%;">
+                        <div class="part-input-row" style="display: flex; gap: 4px; flex: 1;">
+                            <input type="text" class="searchPartInput" placeholder="例: IF000-304" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tabs-container">
+            <button class="tab-btn active" id="tabProduct" onclick="switchTab('product')">📦 製品検索</button>
+            <button class="tab-btn" id="tabRequest" onclick="switchTab('request')">📄 依頼書検索</button>
+            <button class="tab-btn" id="tabGlobal" onclick="switchTab('global')">🔍 全体検索</button>
+        </div>
+        
+        <div id="globalFilters" class="global-filters" style="display: none;">
+            <label class="filter-label"><input type="checkbox" id="filterBom" checked onchange="performSearch()"> 📊 BOM</label>
+            <label class="filter-label"><input type="checkbox" id="filterReq" checked onchange="performSearch()"> 📄 加工依頼書</label>
+            <label class="filter-label"><input type="checkbox" id="filterInsp" checked onchange="performSearch()"> ✅ 検査成績書</label>
+            <label class="filter-label"><input type="checkbox" id="filterPhoto" checked onchange="performSearch()"> 📷 写真・その他</label>
+            <label class="filter-label"><input type="checkbox" id="filterDrawing" checked onchange="performSearch()"> 📐 図面</label>
+        </div>
+
+        <div id="stats" class="stats-info"></div>
+        <div id="results" class="results-grid">
+            <!-- Products will be injected here -->
+        </div>
+    </main>
+
+    <!-- Modal for Preview & AI confirmation -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3 id="modalTitle">File Preview</h3>
+                <div class="modal-actions">
+                    <a id="modalOpenOriginal" href="#" target="_blank" class="btn btn-secondary">元のファイルを開く</a>
+                    <button id="modalClose" class="btn btn-primary">閉じる✖</button>
+                </div>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <!-- Previews or Exception UI injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js?v=17"></script>
+</body>
+</html>
