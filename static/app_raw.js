@@ -230,7 +230,7 @@ async function performSearch() {
     const partInputs = Array.from(document.querySelectorAll('.searchPartInput')).map(i => i.value.trim()).filter(v => v !== '');
     const part = partInputs.join(' ');
     const masterInputs = Array.from(document.querySelectorAll('.searchMasterInput')).map(i => i.value.trim()).filter(v => v !== '');
-    const search_master = masterInputs.map(t => normalize(t));
+    const search_master = masterInputs.join(' ').split(/\s+/).map(t => normalize(t)).filter(v=>v);
 
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
@@ -252,7 +252,7 @@ async function performSearch() {
         const response = await fetch(`/api/search?${params.toString()}`);
         const data = await response.json();
         lastGroups = data.results;
-        const state = { q, seiban, req_no: req, product, part_no: part, company: company };
+        const state = { q, seiban, req_no: req, product, part_no: part, company: company, master: masterInputs.join(' ') };
         renderResults(data.results, state);
         if (data.has_more) {
             resultsContainer.insertAdjacentHTML('beforeend', '<div style="text-align:center; padding:1.5rem; margin-top:1rem; border-top:1px solid var(--border); color:var(--text-muted);">ℹ️ 結果が多すぎるため、上位100件のみを表示しています。さらに条件を絞り込んでください。</div>');
@@ -399,7 +399,7 @@ function renderProductSearch(groups, tokens) {
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
-                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>highlight(s, tokens)).join('<br>') + `</div>` : ''}</td>
                             </tr>`;
                         });
                     } else {
@@ -653,7 +653,7 @@ function renderRequestSearch(groups, tokens) {
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
-                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>highlight(s, tokens)).join('<br>') + `</div>` : ''}</td>
                                 <td>${masterHtml}</td>
                             </tr>`;
                         });
@@ -847,7 +847,7 @@ function renderGlobalSearch(groups, tokens, state) {
                         <td>${highlight(c.role, tokens)}</td>
                         <td>${createTag(c.part_no, 'part')}</td>
                         <td>${highlight(c.note, tokens)}</td>
-                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>highlight(s, tokens)).join('<br>') + `</div>` : ''}</td>
                     </tr>`;
                 });
                 compsHtml += `</table></div>`;

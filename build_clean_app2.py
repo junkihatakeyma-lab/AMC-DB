@@ -192,7 +192,7 @@ async function performSearch() {
     const partInputs = Array.from(document.querySelectorAll('.searchPartInput')).map(i => i.value.trim()).filter(v => v !== '');
     const part = partInputs.join(' ');
     const masterInputs = Array.from(document.querySelectorAll('.searchMasterInput')).map(i => i.value.trim()).filter(v => v !== '');
-    const search_master = masterInputs.map(t => normalize(t));
+    const search_master = masterInputs.join(' ').split(/\s+/).map(t => normalize(t)).filter(v=>v);
 
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
@@ -325,7 +325,7 @@ async function performSearch() {
     }
 
     lastGroups = filteredGroups;
-    const state = { q, seiban, req_no: req, product, part_no: part, company: company };
+    const state = { q, seiban, req_no: req, product, part_no: part, company: company, master: masterInputs.join(' ') };
     renderResults(filteredGroups, state);
 }
 
@@ -415,7 +415,7 @@ function renderProductSearch(groups, tokens, resultsContainer, statsContainer) {
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
-                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>highlight(s, tokens)).join('<br>') + `</div>` : ''}</td>
                             </tr>`;
                         });
                     } else {
