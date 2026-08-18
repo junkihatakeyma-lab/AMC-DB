@@ -482,11 +482,11 @@ async function performSearch() {
             }
         }
 
-        if (match_seiban && match_req && match_product && match_company && match_part && match_q) {
+        if (match_seiban && match_req && match_product && match_company && match_part && match_q && match_master) {
             let g_out = JSON.parse(JSON.stringify(g));
             
             // Filter children only if specific fields are typed
-            if (search_seiban || search_req || search_part.length > 0 || search_company) {
+            if (search_seiban || search_req || search_part.length > 0 || search_company || search_master.length > 0) {
                 if (search_seiban) {
                     if (g_out.boms) g_out.boms = g_out.boms.filter(b => normalize(b.seiban || '').includes(search_seiban));
                     if (g_out.requests) g_out.requests = g_out.requests.filter(r => normalize(r.seiban || '').includes(search_seiban));
