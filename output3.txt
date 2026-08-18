@@ -1,0 +1,35 @@
+ts.length > 0) {
+                compsHtml = `<div class="table-wrap" style="margin-bottom:1rem"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                b.components.forEach(c => {
+                    let isRedText = c.role === '【特記・赤字】';
+                    let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
+                    compsHtml += `<tr style="${style}">
+                        <td>${highlight(c.role, tokens)}</td>
+                        <td>${createTag(c.part_no, 'part')}</td>
+                        <td>${highlight(c.note, tokens)}</td>
+                    </tr>`;
+                });
+                compsHtml += `</table></div>`;
+            }
+            html += `
+                <div class="item-card">
+                    <h4>${escapeHtml(b.file.replace(/\\/g, '/').split('/').pop())}</h4>
+                    <p style="margin:0 0 0.5rem 0; font-size:0.85rem; color:var(--text-muted)">
+                        製番: ${highlight(b.seiban, tokens)} | 品名: ${highlight(b._product && b._product.name, tokens)}
+                    </p>
+                    ${compsHtml}
+                    <div class="action-bar">
+                        <button class="btn btn-primary" onclick='openPreview(${escapeHtml(JSON.stringify(b.previews))}, ${escapeHtml(JSON.stringify(b.file))})'>プレビュー</button>
+                        ${b.sp_url ? `<a href="${b.sp_url}" target="_blank" class="btn btn-primary" style="background:#0078d4; border-color:#0078d4;">🌐 ブラウザで開く (Excel for Web)</a>` : (b.file ? `<a href="/${b.file.replace(/\\/g, '/').split('/').map(encodeURIComponent).join('/')}" target="_blank" class="btn btn-secondary">Excelを開く</a>` : '')}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    }
+
+    // Render Requests Flat
+    if (showReq && allReqs.length > 0) {
+        html += `<div class="flat-section"><h3>📄 加工依頼書一覧 (${allReqs.length}件)</h3>`;
+        allReqs.forEach(r => {
+            const isModif

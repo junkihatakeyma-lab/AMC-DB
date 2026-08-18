@@ -1,0 +1,4 @@
+Line 885: (c.master ? '<span title="紐付け済み" style="color:#20c997; margin-left:4px; font-size:14px;">🔗</span>' : '<span title="未紐付け" style="color:#e74c3c; margin-left:4px; font-size:14px;">❌</span>')}
+Line 887: `<button class="btn btn-secondary" style="padding: 1px 4px; font-size: 11px; margin-left: 4px;" onclick="openLinkModal('${escapeHtml(c.part_no).replace(/'/g, "\\'")}')">📝紐付</button>`}
+Line 889: <td>${c.master ? highlight(c.master.hinmei, tokens) : ''}</td>
+Line 890: <td>${c.master ? highlight(c.master.k_sunpo, tokens) : ''}</td>

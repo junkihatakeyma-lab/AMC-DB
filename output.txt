@@ -1,0 +1,49 @@
+st numB = parseInt(String(b.request_no).replace(/\\D/g, '')) || 0;
+                    return numB - numA;
+                });
+                g_out.requests = g_out.requests.slice(0, 100);
+            }
+
+            if (search_seiban && g_out.boms) {
+                g_out.boms = g_out.boms.filter(b => normalize(b.seiban).includes(search_seiban));
+            }
+
+            if (search_part.length > 0 && g_out.boms) {
+                g_out.boms = g_out.boms.filter(b => {
+                    if (!b.components) return false;
+                    for (let token of search_part) {
+                        let tokenFound = false;
+                        if (typeof b.components === 'string') {
+                            if (normalize(b.components).includes(token)) tokenFound = true;
+                        } else {
+                            for (let c of b.components) {
+                                if (normalize(c.part_no).includes(token)) {
+                                    tokenFound = true; break;
+                                }
+                            }
+                        }
+                        if (!tokenFound) return false;
+                    }
+                    return true;
+                });
+            }
+
+            results.push(g_out);
+            if (results.length >= 200) break;
+        }
+    }
+
+    lastGroups = results;
+    const state = { q, seiban, req_no: req, product, part_no: part, company };
+    renderResults(results, state);
+    
+    if (results.length >= 200) {
+        resultsContainer.insertAdjacentHTML('beforeend', '<div style="text-align:center; padding:1.5rem; margin-top:1rem; border-top:1px solid var(--border); color:var(--text-muted);">⚠️ 結果が多すぎるため、上位200件のみを表示しています。さらに条件を絞り込んでください。</div>');
+    }
+}
+
+
+// Generate tag chips for recursive search
+function createTag(text, type) {
+    if (!text) return '';
+    return `<span class="tag" onclick="triggerTagSearch('${text.replace(/'/g, "\\'")}', '${type || ''}')">${escapeHtml(text)}

@@ -1,0 +1,77 @@
+[
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 1",
+    "Prompt": "Please process chunk 1."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 2",
+    "Prompt": "Please process chunk 2."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 4",
+    "Prompt": "Please process chunk 4."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 5",
+    "Prompt": "Please process chunk 5."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 7",
+    "Prompt": "Please process chunk 7."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 8",
+    "Prompt": "Please process chunk 8."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 9",
+    "Prompt": "Please process chunk 9."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 10",
+    "Prompt": "Please process chunk 10."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 11",
+    "Prompt": "Please process chunk 11."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 12",
+    "Prompt": "Please process chunk 12."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 13",
+    "Prompt": "Please process chunk 13."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 14",
+    "Prompt": "Please process chunk 14."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 16",
+    "Prompt": "Please process chunk 16."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 17",
+    "Prompt": "Please process chunk 17."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 19",
+    "Prompt": "Please process chunk 19."
+  }
+]

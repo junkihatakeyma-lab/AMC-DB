@@ -1,0 +1,7 @@
+import sqlite3
+conn = sqlite3.connect('C:/Users/jhatakeyama/.gemini/antigravity/scratch/PartsSearchDB/部品DB.sqlite')
+c = conn.cursor()
+c.execute("SELECT COUNT(*) FROM requests WHERE is_handwritten=1")
+print('Total handwritten:', c.fetchone()[0])
+c.execute("SELECT COUNT(*) FROM requests WHERE is_handwritten=1 AND hinmei != ''")
+print('Processed handwritten:', c.fetchone()[0])

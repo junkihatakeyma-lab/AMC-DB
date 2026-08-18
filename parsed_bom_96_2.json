@@ -1,0 +1,22 @@
+[
+  {"request_no": "632", "hinmei": "[手書き] IF102=0100 サニタリー", "components": [{"part_no": "52IF1000500C"}, {"part_no": "IF100-0500A(内)"}]},
+  {"request_no": "6320", "hinmei": "[手書き] FE2-1000-0TF (IF400=1000)", "components": [{"part_no": "IF400-101"}, {"part_no": "IF400-104-1000A"}, {"part_no": "IF400-1000"}]},
+  {"request_no": "6321", "hinmei": "[手書き] 5F130改5-2137", "components": [{"part_no": "5F130改5-501"}, {"part_no": "5F130-502"}, {"part_no": "IF000-304-2000-S"}, {"part_no": "5F130改5-2137"}, {"part_no": "5F137改用-CLP-SUS"}, {"part_no": "A:5F130-009A"}, {"part_no": "B:5F130-009B"}, {"part_no": "IF000-BDG-0030"}, {"part_no": "IF000-TS/M8"}]},
+  {"request_no": "6321A", "hinmei": "[手書き] 箱 #6321", "components": []},
+  {"request_no": "6322", "hinmei": "[手書き] IF220E=0500", "components": [{"part_no": "IF220-001"}, {"part_no": "IF220-402-066"}, {"part_no": "IF220-004-0500"}, {"part_no": "IF220-007D"}, {"part_no": "IF220-0500"}]},
+  {"request_no": "6323", "hinmei": "[手書き] SA640-75S (IF104=0640)", "components": [{"part_no": "IF104-401-0800"}, {"part_no": "IF104-002-0800"}, {"part_no": "IF104-004-0640"}, {"part_no": "IF104-007"}, {"part_no": "IF104-012"}, {"part_no": "IF104-0800"}]},
+  {"request_no": "6324", "hinmei": "[手書き] IF433B=0660 TF EPDM", "components": [{"part_no": "IF433-001"}, {"part_no": "IF433B-004-0660 I-A"}, {"part_no": "IF433B-004-0660 OS"}, {"part_no": "IF433B-007A-S/EPDM"}, {"part_no": "IF433B-007B-S/EPDM"}, {"part_no": "IF433B-0660"}]},
+  {"request_no": "6324A", "hinmei": "[手書き] #6324", "components": []},
+  {"request_no": "6325", "hinmei": "[手書き] IF433B=0660 TF EPDM", "components": [{"part_no": "IF433-001"}, {"part_no": "IF433B-004-0660 I-A"}, {"part_no": "IF433B-004-0660 OS"}, {"part_no": "IF433B-007A-S/EPDM"}, {"part_no": "IF433B-007B-S/EPDM"}, {"part_no": "IF433B-0660"}]},
+  {"request_no": "6325A", "hinmei": "[手書き] #6325", "components": []},
+  {"request_no": "6326", "hinmei": "[手書き] IF400B=0560 (KF18-190)", "components": [{"part_no": "IF400D-001"}, {"part_no": "IF400D-002"}, {"part_no": "IF400D-004-0560"}, {"part_no": "IF400D-117"}, {"part_no": "IF400D-007"}, {"part_no": "IF400D-0560"}]},
+  {"request_no": "6326A", "hinmei": "[手書き] IF400B-0560", "components": []},
+  {"request_no": "6327", "hinmei": "[手書き] IF220=1000B", "components": [{"part_no": "IF220-001"}, {"part_no": "IF220-402-066"}, {"part_no": "IF220-004-1000"}, {"part_no": "IF220-007F"}, {"part_no": "IF220-1000"}]},
+  {"request_no": "6328", "hinmei": "[手書き] IF400B=0560 導電仕様", "components": [{"part_no": "IF400D-001"}, {"part_no": "IF400D-002"}, {"part_no": "IF400D-004-0560"}, {"part_no": "IF400D-117"}, {"part_no": "IF000-007-DO/12-10-1000-S"}, {"part_no": "IF000-SN/M12-SUS-S"}, {"part_no": "IF000-SL/M12-DO-S"}, {"part_no": "IF400D-0560"}]},
+  {"request_no": "6328A", "hinmei": "[手書き] IF400B-0560 導電仕様", "components": []},
+  {"request_no": "6329", "hinmei": "[手書き] 4F240-1000TF NM500TF (KF31-277)", "components": [{"part_no": "4F240-101"}, {"part_no": "IF220-102"}, {"part_no": "IF253-104-1000"}, {"part_no": "IF220-113"}, {"part_no": "IF220-111"}, {"part_no": "IF253-114"}, {"part_no": "IF000-BDS-1000"}, {"part_no": "4F240-1000"}, {"part_no": "IF000-BR/NST4-2"}]},
+  {"request_no": "633", "hinmei": "[手書き] IF220=0500", "components": [{"part_no": "IF226-001"}, {"part_no": "IF220-004-0500"}, {"part_no": "IF220-007D"}, {"part_no": "IF220-0500"}]},
+  {"request_no": "6330", "hinmei": "[手書き] 4F158-0518", "components": [{"part_no": "4F158-101"}, {"part_no": "4F158-101CA"}, {"part_no": "4F158-102"}, {"part_no": "ASSY-BF0400"}, {"part_no": "4F158-104-0518"}, {"part_no": "4F158-007A-S"}, {"part_no": "4F158-110"}, {"part_no": "IF000-WEB/M8-20SUS"}, {"part_no": "IF000-LN/M8SUS"}, {"part_no": "IF100-0500A"}]},
+  {"request_no": "6331", "hinmei": "[手書き] 5F137B-0900 (図KF31-195-111)", "components": [{"part_no": "5F137B-501"}, {"part_no": "5F130-502"}, {"part_no": "IF000-304-2000-80-S"}, {"part_no": "IF000-304-0500-80-S"}, {"part_no": "5F137-0900"}, {"part_no": "5F130A用"}, {"part_no": "5F130B用"}]},
+  {"request_no": "6331A", "hinmei": "[手書き] 箱#6331", "components": []}
+]

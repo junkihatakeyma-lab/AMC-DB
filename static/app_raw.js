@@ -172,7 +172,35 @@ window.addPartInput = function(val = '') {
     if (currentInputs.length + 1 >= 5) {
         document.getElementById('addPartBtn').disabled = true;
     }
+}
+
+window.addMasterInput = function(val = '') {
+    const list = document.getElementById('masterInputsList');
+    const currentInputs = list.querySelectorAll('.master-input-row');
+    if (currentInputs.length >= 3) {
+        alert('マスタ情報の検索窓は最大3つまでです。');
+        return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'master-input-row';
+    row.style = 'display: flex; gap: 4px; flex: 1;';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'searchMasterInput';
+    input.placeholder = '追加のマスタ情報';
+    input.value = val;
+    input.style = 'width: 100%;';
+    input.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(performSearch, 300);
+    });
+
+    row.appendChild(input);
+    list.appendChild(row);
 };
+;
 
 // Perform search via API
 window.clearAllSearch = function() {
@@ -201,6 +229,9 @@ async function performSearch() {
     const product = document.getElementById('searchProduct').value.trim();
     const partInputs = Array.from(document.querySelectorAll('.searchPartInput')).map(i => i.value.trim()).filter(v => v !== '');
     const part = partInputs.join(' ');
+    const masterInputs = Array.from(document.querySelectorAll('.searchMasterInput')).map(i => i.value.trim()).filter(v => v !== '');
+    const search_master = masterInputs.map(t => normalize(t));
+
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
 

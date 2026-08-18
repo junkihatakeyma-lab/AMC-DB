@@ -1,0 +1,691 @@
+[
+  {
+    "request_no": "5008",
+    "hinmei": "[手書き] IF220FW=1000 首下パッキン",
+    "components": [
+      {
+        "part_no": "IF220-401-0220"
+      },
+      {
+        "part_no": "IF220-402-0132"
+      },
+      {
+        "part_no": "IF220-004-1000-A"
+      },
+      {
+        "part_no": "IF220-007A"
+      },
+      {
+        "part_no": "IF220-1000(内)"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "A:IF220FF用"
+      },
+      {
+        "part_no": "B:3F200用"
+      },
+      {
+        "part_no": "UR-328"
+      }
+    ]
+  },
+  {
+    "request_no": "5009",
+    "hinmei": "[手書き] IF406=0630D(図KF28-12C-2)",
+    "components": [
+      {
+        "part_no": "IF406-101-0630C"
+      },
+      {
+        "part_no": "IF406-101-0630C-ASSY"
+      },
+      {
+        "part_no": "IF406-102-0630C"
+      },
+      {
+        "part_no": "IF406-104-0630"
+      },
+      {
+        "part_no": "IF406-124"
+      },
+      {
+        "part_no": "IF406-124A"
+      },
+      {
+        "part_no": "IF406-007-0630A20-S"
+      },
+      {
+        "part_no": "IF406-0630A"
+      },
+      {
+        "part_no": "IF000-BR/NST4-2"
+      },
+      {
+        "part_no": "P-800"
+      }
+    ]
+  },
+  {
+    "request_no": "500A",
+    "hinmei": "[手書き] IF-116",
+    "components": [
+      {
+        "part_no": "NP-535"
+      },
+      {
+        "part_no": "B-227TR"
+      }
+    ]
+  },
+  {
+    "request_no": "501",
+    "hinmei": "[手書き] IF220=0500",
+    "components": [
+      {
+        "part_no": "2F220-004-0500"
+      },
+      {
+        "part_no": "2F220-001"
+      },
+      {
+        "part_no": "2F220-007D"
+      },
+      {
+        "part_no": "2F220-0500(バルク)"
+      }
+    ]
+  },
+  {
+    "request_no": "5010",
+    "hinmei": "[手書き] IF220=0500",
+    "components": [
+      {
+        "part_no": "IF220-001"
+      },
+      {
+        "part_no": "IF220-402-066"
+      },
+      {
+        "part_no": "IF220-004-0500"
+      },
+      {
+        "part_no": "IF220-007D"
+      },
+      {
+        "part_no": "IF220-0500(内)"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "KB-400"
+      },
+      {
+        "part_no": "UR-328"
+      }
+    ]
+  },
+  {
+    "request_no": "5011",
+    "hinmei": "[手書き] 5F130改5-2137",
+    "components": [
+      {
+        "part_no": "5F130改5-501"
+      },
+      {
+        "part_no": "5F130-502"
+      },
+      {
+        "part_no": "IF000-304-2000"
+      },
+      {
+        "part_no": "5F130改5-2137"
+      },
+      {
+        "part_no": "5F137改用-CLP-SUS"
+      },
+      {
+        "part_no": "A:5F130A用"
+      },
+      {
+        "part_no": "B:5F130B用"
+      },
+      {
+        "part_no": "UR-216"
+      }
+    ]
+  },
+  {
+    "request_no": "5012",
+    "hinmei": "[手書き] FE3-1500-OTF (IF426=1500)",
+    "components": [
+      {
+        "part_no": "IF426-101D"
+      },
+      {
+        "part_no": "IF426-102D"
+      },
+      {
+        "part_no": "IF426-004-1500-A"
+      },
+      {
+        "part_no": "IF426-1500"
+      },
+      {
+        "part_no": "E-616"
+      }
+    ]
+  },
+  {
+    "request_no": "5013",
+    "hinmei": "[手書き] 4F200-0545",
+    "components": [
+      {
+        "part_no": "4F200-001"
+      },
+      {
+        "part_no": "4F200-002"
+      },
+      {
+        "part_no": "4F200-004-0545"
+      },
+      {
+        "part_no": "4F200-007-S"
+      },
+      {
+        "part_no": "4F200-0545"
+      },
+      {
+        "part_no": "IF220-0500(内)"
+      },
+      {
+        "part_no": "KB-400"
+      }
+    ]
+  },
+  {
+    "request_no": "5013A",
+    "hinmei": "[手書き] 4F200-0545-07000",
+    "components": []
+  },
+  {
+    "request_no": "5014",
+    "hinmei": "[手書き] 4F162-0545",
+    "components": [
+      {
+        "part_no": "4F162-001"
+      },
+      {
+        "part_no": "4F162-002"
+      },
+      {
+        "part_no": "4F162-004-0545"
+      },
+      {
+        "part_no": "4F162-007"
+      },
+      {
+        "part_no": "4F162-0545"
+      },
+      {
+        "part_no": "IF000-WIN/M5"
+      },
+      {
+        "part_no": "KB-400"
+      }
+    ]
+  },
+  {
+    "request_no": "5015",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5016",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5017",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5018",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5019",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "502",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5020",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5021",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5022",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5023",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5024",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5025",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5026",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5027",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5028",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5029",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "503",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5030",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5031",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5031A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5032",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5032A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5033",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5033A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5034",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5035",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5036",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5037",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5038",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5039",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "504",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5040",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5041",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5042",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5043",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5043A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5044",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5045",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5045A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5046",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5047",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5048",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5049",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "504A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "505",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5050",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5051",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5052",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5052A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5053",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5053A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5054",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5055",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5056",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5057",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5058",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5059",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "506",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5060",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5061",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5062",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5063",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5064",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5065",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5066",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5067",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5068",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5069",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "507",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5070",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5071",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5072",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5073",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5074",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5075",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5076",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5077",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5077A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5078",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5079",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "508",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5080",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5080A",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5081",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5082",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5083",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5084",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5085",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5086",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  },
+  {
+    "request_no": "5087",
+    "hinmei": "[手書き] UNKNOWN",
+    "components": []
+  }
+]

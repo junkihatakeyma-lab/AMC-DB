@@ -63,6 +63,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="search-field" id="searchMasterContainer" style="width: 100%; margin: 8px 0 0 0;">
+                    <label style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        マスタ情報 (寸法・材質など AND検索)
+                        <button type="button" class="btn btn-secondary" id="addMasterBtn" onclick="addMasterInput()" style="padding: 2px 8px; font-size: 14px; border-radius: 4px; height: auto;">＋追加 (最大3つ)</button>
+                    </label>
+                    <div id="masterInputsList" style="display: flex; flex-direction: row; gap: 8px; width: 100%;">
+                        <div class="master-input-row" style="display: flex; gap: 4px; flex: 1;">
+                            <input type="text" class="searchMasterInput" placeholder="M3" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -140,6 +151,6 @@
     <!-- Initialize Firebase -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <script src="/static/app.js?v=32" charset="utf-8"></script>
+    <script src="/static/app.js?v=33" charset="utf-8"></script>
 </body>
 </html>

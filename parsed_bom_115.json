@@ -1,0 +1,22 @@
+[
+  {"request_no": "770", "hinmei": "[手書き] IF226=1500", "components": [{"part_no": "IF226-001"}, {"part_no": "UR-328"}, {"part_no": "IF226-004"}, {"part_no": "IF226-007B"}, {"part_no": "IF226-1500"}]},
+  {"request_no": "7700", "hinmei": "[手書き] SA800-75E (IF104=0800)", "components": [{"part_no": "IF104-001-0800"}, {"part_no": "IF104-002-0800"}]},
+  {"request_no": "7701", "hinmei": "[手書き] SA1000-75S (IF104=1000)", "components": [{"part_no": "IF104-401-0800"}, {"part_no": "IF104-002-0800"}, {"part_no": "IF104-004-1000"}, {"part_no": "IF104-012"}, {"part_no": "IF104-0800"}, {"part_no": "IF400-1000"}, {"part_no": "UR-328"}, {"part_no": "KB-400"}]},
+  {"request_no": "7702", "hinmei": "[手書き] IF220F=1000", "components": [{"part_no": "IF220-401-0220-DN"}, {"part_no": "IF220-402-066"}, {"part_no": "IF220-004-1000"}, {"part_no": "IF220-007B"}, {"part_no": "IF220-007G"}, {"part_no": "IF220-1000"}, {"part_no": "IF220F-009"}, {"part_no": "UR-328"}]},
+  {"request_no": "7703", "hinmei": "[手書き] IF253=0500", "components": [{"part_no": "IF253-001"}, {"part_no": "IF220-402-0132"}, {"part_no": "IF220-004-0500"}, {"part_no": "IF253-014"}, {"part_no": "IF220-007D"}, {"part_no": "IF220-0500"}, {"part_no": "3F200-009"}, {"part_no": "KB-400"}, {"part_no": "UR-328"}]},
+  {"request_no": "7704", "hinmei": "[手書き] IF253=1053", "components": [{"part_no": "IF253-001"}, {"part_no": "IF220-402-066"}, {"part_no": "IF253-004-1053A"}, {"part_no": "IF220-007G"}, {"part_no": "IF220-007A"}, {"part_no": "IF220-007B-02"}, {"part_no": "IF253-014"}, {"part_no": "IF253-1053"}, {"part_no": "IF220-009"}, {"part_no": "KB-400"}, {"part_no": "UR-328"}]},
+  {"request_no": "7704A", "hinmei": "[手書き] ", "components": []},
+  {"request_no": "7705", "hinmei": "[手書き] IF220FF=0520", "components": [{"part_no": "IF220-401-0220A"}, {"part_no": "IF220-402-066"}, {"part_no": "IF220FF-004-0520"}, {"part_no": "IF220-007D"}, {"part_no": "IF220-0500"}, {"part_no": "IF253-0529"}, {"part_no": "IF220FF"}, {"part_no": "UR-328"}]},
+  {"request_no": "7706", "hinmei": "[手書き] 4F200-0545", "components": [{"part_no": "4F200-001"}, {"part_no": "4F200-002"}, {"part_no": "4F200-004-0545"}, {"part_no": "4F200-007-S"}, {"part_no": "4F200-0545"}, {"part_no": "IF220-0500"}, {"part_no": "KB-400"}]},
+  {"request_no": "7707", "hinmei": "[手書き] IF400=0660A", "components": [{"part_no": "IF400-101"}, {"part_no": "IF400-102"}, {"part_no": "IF400-104-0660"}, {"part_no": "IF412-007-0800-S"}, {"part_no": "IF400D-0660"}, {"part_no": "IF412-0800"}]},
+  {"request_no": "7708", "hinmei": "[手書き] 4F102A-0215", "components": [{"part_no": "4F102A-101-S"}, {"part_no": "4F102A-502-S"}, {"part_no": "4F102A-104-0215-A-S"}, {"part_no": "4F102A-007-S"}, {"part_no": "E-616"}, {"part_no": "UR-215"}]},
+  {"request_no": "7708A", "hinmei": "[手書き] ", "components": []},
+  {"request_no": "7708B", "hinmei": "[手書き] ", "components": []},
+  {"request_no": "7708C", "hinmei": "[手書き] ", "components": []},
+  {"request_no": "7709", "hinmei": "[手書き] IF220=0500", "components": [{"part_no": "IF220-002"}, {"part_no": "IF220-004-0500"}, {"part_no": "IF220-0500"}, {"part_no": "KB-400"}]},
+  {"request_no": "771", "hinmei": "[手書き] IF226=1000", "components": [{"part_no": "IF226-001"}, {"part_no": "UR-328"}, {"part_no": "IF226-004"}, {"part_no": "IF226-007A"}, {"part_no": "IF226-007B"}, {"part_no": "IF226-1000"}]},
+  {"request_no": "7710", "hinmei": "[手書き] IF220=0500", "components": [{"part_no": "IF220-001"}, {"part_no": "IF220-402-066"}, {"part_no": "IF220-004-0500"}, {"part_no": "IF220-007D"}, {"part_no": "IF220-0500"}, {"part_no": "IF220-009"}, {"part_no": "KB-400"}, {"part_no": "UR-328"}]},
+  {"request_no": "7711", "hinmei": "[手書き] IF220F=0500", "components": [{"part_no": "IF220-401-0220A"}, {"part_no": "IF220-402-066"}, {"part_no": "IF000-304-0500-125-S"}, {"part_no": "IF220-007D-DO-S"}, {"part_no": "IF220-0500"}, {"part_no": "IF220FF-009"}, {"part_no": "E-6500"}, {"part_no": "UR-328"}]},
+  {"request_no": "7712", "hinmei": "[手書き] FE3-2000-O", "components": [{"part_no": "IF426-001A"}, {"part_no": "IF426-002A"}, {"part_no": "IF426-004-2000-A"}, {"part_no": "IF426-2000"}, {"part_no": "E-6100"}]},
+  {"request_no": "7713", "hinmei": "[手書き] YM-320用", "components": [{"part_no": "5F222/214-501-S"}, {"part_no": "5F222/214-504-R-S"}, {"part_no": "5F222/214-0252"}, {"part_no": "E-616"}]}
+]

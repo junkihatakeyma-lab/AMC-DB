@@ -1,0 +1,5 @@
+ style="color:#20c997; margin-left:4px; font-size:14px;">�迫</span>' : '<span title="譛ｪ邏蝉ｻ倥￠" style="color:#e74c3c; margin-left:4px; font-size:14px;">笶・/span>'}
+                                    <button class="btn btn-secondary" style="padding: 1px 4px; font-size: 11px; margin-left: 4px;" onclick="openLinkModal('${escapeHtml(c.part_no).replace(/'/g, "\\\\'")}')">�統邏蝉ｻ・/button>
+                                </td>
+                                <td>${c.master ? highlight(c.master.hinmei, tokens) : ''}</td>
+                                <td>${c.master ? highlight(c.master.k_sunpo, tokens) :

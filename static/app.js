@@ -172,7 +172,35 @@ window.addPartInput = function(val = '') {
     if (currentInputs.length + 1 >= 5) {
         document.getElementById('addPartBtn').disabled = true;
     }
+}
+
+window.addMasterInput = function(val = '') {
+    const list = document.getElementById('masterInputsList');
+    const currentInputs = list.querySelectorAll('.master-input-row');
+    if (currentInputs.length >= 3) {
+        alert('マスタ情報の検索窓は最大3つまでです。');
+        return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'master-input-row';
+    row.style = 'display: flex; gap: 4px; flex: 1;';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'searchMasterInput';
+    input.placeholder = '追加のマスタ情報';
+    input.value = val;
+    input.style = 'width: 100%;';
+    input.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(performSearch, 300);
+    });
+
+    row.appendChild(input);
+    list.appendChild(row);
 };
+;
 
 // Perform search via API
 window.clearAllSearch = function() {
@@ -373,6 +401,9 @@ async function performSearch() {
     const product = document.getElementById('searchProduct').value.trim();
     const partInputs = Array.from(document.querySelectorAll('.searchPartInput')).map(i => i.value.trim()).filter(v => v !== '');
     const part = partInputs.join(' ');
+    const masterInputs = Array.from(document.querySelectorAll('.searchMasterInput')).map(i => i.value.trim()).filter(v => v !== '');
+    const search_master = masterInputs.map(t => normalize(t));
+
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
 
@@ -408,6 +439,25 @@ async function performSearch() {
         let match_req = true;
         let match_product = true;
         let match_company = true;
+        
+        let match_master = true;
+        if (search_master.length > 0) {
+            if (!g.boms || g.boms.length === 0) {
+                match_master = false;
+            } else {
+                match_master = g.boms.some(b => {
+                    if (!b.components) return false;
+                    return search_master.every(token => {
+                        return b.components.some(c => {
+                            if (!c.master) return false;
+                            const masterStr = `${c.master.hinmei || ''} ${c.master.k_sunpo || ''} ${c.master.zaishitsu || ''}`;
+                            return normalize(masterStr).includes(token);
+                        });
+                    });
+                });
+            }
+        }
+
         let match_part = true;
         let match_q = true;
 
@@ -454,6 +504,22 @@ async function performSearch() {
                         });
                     }
                 }
+
+                if (search_master.length > 0) {
+                    if (g_out.boms) {
+                        g_out.boms = g_out.boms.filter(b => {
+                            if (!b.components) return false;
+                            return search_master.every(token => {
+                                return b.components.some(c => {
+                                    if (!c.master) return false;
+                                    const masterStr = `${c.master.hinmei || ''} ${c.master.k_sunpo || ''} ${c.master.zaishitsu || ''}`;
+                                    return normalize(masterStr).includes(token);
+                                });
+                            });
+                        });
+                    }
+                }
+
             }
             
             let totalBoms = g_out.boms ? g_out.boms.length : 0;

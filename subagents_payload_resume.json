@@ -1,0 +1,152 @@
+[
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 1-4",
+    "Prompt": "Please process chunks 1, 2, 4."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 5-8",
+    "Prompt": "Please process chunks 5, 7, 8."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 9-11",
+    "Prompt": "Please process chunks 9, 10, 11."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 12-14",
+    "Prompt": "Please process chunks 12, 13, 14."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 16-19",
+    "Prompt": "Please process chunks 16, 17, 19."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 20-22",
+    "Prompt": "Please process chunks 20, 21, 22."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 23-26",
+    "Prompt": "Please process chunks 23, 25, 26."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 28-30",
+    "Prompt": "Please process chunks 28, 29, 30."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 31-34",
+    "Prompt": "Please process chunks 31, 32, 34."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 35-38",
+    "Prompt": "Please process chunks 35, 37, 38."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 40-43",
+    "Prompt": "Please process chunks 40, 41, 43."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 44-46",
+    "Prompt": "Please process chunks 44, 45, 46."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 47-49",
+    "Prompt": "Please process chunks 47, 48, 49."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 50-53",
+    "Prompt": "Please process chunks 50, 52, 53."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 54-56",
+    "Prompt": "Please process chunks 54, 55, 56."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 57-59",
+    "Prompt": "Please process chunks 57, 58, 59."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 60-62",
+    "Prompt": "Please process chunks 60, 61, 62."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 63-65",
+    "Prompt": "Please process chunks 63, 64, 65."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 67-69",
+    "Prompt": "Please process chunks 67, 68, 69."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 70-75",
+    "Prompt": "Please process chunks 70, 71, 75."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 76-78",
+    "Prompt": "Please process chunks 76, 77, 78."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 79-81",
+    "Prompt": "Please process chunks 79, 80, 81."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 82-84",
+    "Prompt": "Please process chunks 82, 83, 84."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 85-88",
+    "Prompt": "Please process chunks 85, 86, 88."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 89-91",
+    "Prompt": "Please process chunks 89, 90, 91."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 92-95",
+    "Prompt": "Please process chunks 92, 94, 95."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 97-102",
+    "Prompt": "Please process chunks 97, 98, 102."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 103-106",
+    "Prompt": "Please process chunks 103, 104, 106."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 107-110",
+    "Prompt": "Please process chunks 107, 109, 110."
+  },
+  {
+    "TypeName": "bom_ocr_worker",
+    "Role": "Worker 112-114",
+    "Prompt": "Please process chunks 112, 113, 114."
+  }
+]

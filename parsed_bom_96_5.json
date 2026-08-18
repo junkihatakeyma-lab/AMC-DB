@@ -1,0 +1,102 @@
+[
+  {
+    "request_no": "6373",
+    "hinmei": "[手書き] 大容量濃縮装置 試作機用フィルター (DNSF-0500)",
+    "components": [
+      {"part_no": "DNSF-104-0500-A-S"},
+      {"part_no": "IF406-0630"}
+    ]
+  },
+  {
+    "request_no": "6374",
+    "hinmei": "[手書き] FE3-1600-OTF (IF426=1600)",
+    "components": [
+      {"part_no": "IF426-101A"},
+      {"part_no": "IF426-102A"},
+      {"part_no": "IF426-004-1600"},
+      {"part_no": "IF426-004-1600-A"},
+      {"part_no": "IF426-1600"},
+      {"part_no": "IF426-CP"}
+    ]
+  },
+  {
+    "request_no": "6375",
+    "hinmei": "[手書き] 4F162-0805",
+    "components": [
+      {"part_no": "4F162-001"},
+      {"part_no": "4F162-002"},
+      {"part_no": "4F162-004-0805"},
+      {"part_no": "4F162-004-0805-A"},
+      {"part_no": "4F162-007"},
+      {"part_no": "4F162-0805"},
+      {"part_no": "IF000-WEB/M5-20SUS"},
+      {"part_no": "IF000-WIN/M5"}
+    ]
+  },
+  {
+    "request_no": "6376",
+    "hinmei": "[手書き] 6F127-1010 T8.1 用ベンチュリー",
+    "components": [
+      {"part_no": "6F127-014-T8.1"}
+    ]
+  },
+  {
+    "request_no": "6377",
+    "hinmei": "[手書き] CT IF220-0500 (IF220-0500)",
+    "components": [
+      {"part_no": "IF220-001"},
+      {"part_no": "IF220-402-066"},
+      {"part_no": "IF220-004-0500"},
+      {"part_no": "IF220-007F"},
+      {"part_no": "IF220-0500(内)"},
+      {"part_no": "IF220-0500"},
+      {"part_no": "IF220-009"}
+    ]
+  },
+  {
+    "request_no": "6378",
+    "hinmei": "[手書き] 4F158-0518",
+    "components": [
+      {"part_no": "4F158-101"},
+      {"part_no": "4F158-101CA"},
+      {"part_no": "4F158-102"},
+      {"part_no": "ASSY-BF0400"},
+      {"part_no": "4F158-104-0518"},
+      {"part_no": "4F158-007A-S"},
+      {"part_no": "4F158-110"},
+      {"part_no": "IF000-WEB/M8-20SUS"},
+      {"part_no": "IF000-LN/M8SUS"},
+      {"part_no": "IF100-0500A(内)"},
+      {"part_no": "4F162-0545"}
+    ]
+  },
+  {
+    "request_no": "6379",
+    "hinmei": "[手書き] IF220FF=1000",
+    "components": [
+      {"part_no": "IF220-401-0230"},
+      {"part_no": "IF220-402-066"},
+      {"part_no": "IF220-004-1000"},
+      {"part_no": "IF220-007C"},
+      {"part_no": "IF220-1000(内)"},
+      {"part_no": "IF220-1000"},
+      {"part_no": "IF220FF-009"},
+      {"part_no": "IF220-009"}
+    ]
+  },
+  {
+    "request_no": "637A",
+    "hinmei": "[手書き] IF220 (図面)",
+    "components": []
+  },
+  {
+    "request_no": "638",
+    "hinmei": "[手書き] SA800-75M (IF104=0800)",
+    "components": [
+      {"part_no": "IF104-002-0800"},
+      {"part_no": "IF104-004-0800"},
+      {"part_no": "IF104-0800(内)"},
+      {"part_no": "IF412-0800"}
+    ]
+  }
+]

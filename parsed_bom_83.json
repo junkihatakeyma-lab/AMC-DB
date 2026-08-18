@@ -1,0 +1,1258 @@
+[
+  {
+    "request_no": "#5310",
+    "hinmei": "IF400-0450",
+    "components": [
+      {
+        "part_no": "IF400-101"
+      },
+      {
+        "part_no": "IF400-102"
+      },
+      {
+        "part_no": "IF400-104-0450A"
+      },
+      {
+        "part_no": "IF400-1000"
+      },
+      {
+        "part_no": "IF400-1200"
+      },
+      {
+        "part_no": "IF400D-0560"
+      }
+    ]
+  },
+  {
+    "request_no": "#5311",
+    "hinmei": "IF412-0800",
+    "components": [
+      {
+        "part_no": "IF400-001"
+      },
+      {
+        "part_no": "IF412-004-0800"
+      },
+      {
+        "part_no": "IF412-007-0800-S"
+      },
+      {
+        "part_no": "IF412-0800"
+      }
+    ]
+  },
+  {
+    "request_no": "#5312",
+    "hinmei": "FE3-1500-0",
+    "components": [
+      {
+        "part_no": "IF426-001A"
+      },
+      {
+        "part_no": "IF426-002A"
+      },
+      {
+        "part_no": "IF426-004-1500"
+      },
+      {
+        "part_no": "IF426-004-1500-A"
+      },
+      {
+        "part_no": "IF426-1500"
+      },
+      {
+        "part_no": "IF426-CP"
+      }
+    ]
+  },
+  {
+    "request_no": "#5313",
+    "hinmei": "IF402-0406D",
+    "components": [
+      {
+        "part_no": "IF402-001"
+      },
+      {
+        "part_no": "IF402-002A"
+      },
+      {
+        "part_no": "IF402-004-0406"
+      },
+      {
+        "part_no": "IF402-007A"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF402-0406"
+      }
+    ]
+  },
+  {
+    "request_no": "#5314",
+    "hinmei": "IF220F-0500",
+    "components": [
+      {
+        "part_no": "IF220-401-0220"
+      },
+      {
+        "part_no": "IF220-402-066"
+      },
+      {
+        "part_no": "IF220-004-0500"
+      },
+      {
+        "part_no": "IF220-007C"
+      },
+      {
+        "part_no": "IF220-0500"
+      }
+    ]
+  },
+  {
+    "request_no": "#5315",
+    "hinmei": "IF220-0500AX",
+    "components": [
+      {
+        "part_no": "IF253-101"
+      },
+      {
+        "part_no": "IF253-101 ASSY"
+      },
+      {
+        "part_no": "IF220-402-066"
+      },
+      {
+        "part_no": "IF220-104-0500"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "4F455-CP"
+      }
+    ]
+  },
+  {
+    "request_no": "#5316",
+    "hinmei": "IF226-0350A",
+    "components": [
+      {
+        "part_no": "IF226-101B"
+      },
+      {
+        "part_no": "IF100-402-045"
+      },
+      {
+        "part_no": "IF226-104-0350"
+      },
+      {
+        "part_no": "IF226-007D-DO-S"
+      },
+      {
+        "part_no": "IF100-0500A"
+      },
+      {
+        "part_no": "IF100M-0500TF"
+      }
+    ]
+  },
+  {
+    "request_no": "#5317",
+    "hinmei": "FE3-1700-OTF",
+    "components": [
+      {
+        "part_no": "IF426-101A"
+      },
+      {
+        "part_no": "IF426-102A"
+      },
+      {
+        "part_no": "IF426-004-1700"
+      },
+      {
+        "part_no": "IF426-004-1700-A"
+      },
+      {
+        "part_no": "IF426-1700"
+      }
+    ]
+  },
+  {
+    "request_no": "#5318",
+    "hinmei": "5F130-1437",
+    "components": [
+      {
+        "part_no": "5F130-501"
+      },
+      {
+        "part_no": "5F130-502"
+      },
+      {
+        "part_no": "IF000-304-2000-S"
+      },
+      {
+        "part_no": "5F130-1437"
+      }
+    ]
+  },
+  {
+    "request_no": "#5318A",
+    "hinmei": "",
+    "components": []
+  },
+  {
+    "request_no": "#5319",
+    "hinmei": "5F130275-1237",
+    "components": []
+  },
+  {
+    "request_no": "#5319A",
+    "hinmei": "稲#5319",
+    "components": []
+  },
+  {
+    "request_no": "#531A",
+    "hinmei": "稲#531分",
+    "components": []
+  },
+  {
+    "request_no": "#532",
+    "hinmei": "IF258-0300-021",
+    "components": []
+  },
+  {
+    "request_no": "#5320",
+    "hinmei": "IF220F-1003",
+    "components": []
+  },
+  {
+    "request_no": "#5321",
+    "hinmei": "IF253-0500TF (M2-KF8-59-3-1)",
+    "components": []
+  },
+  {
+    "request_no": "#5322",
+    "hinmei": "4F110-0300",
+    "components": []
+  },
+  {
+    "request_no": "#5324",
+    "hinmei": "プリーツドライヤー用フィルター アクターh300 (ハニカムミニプリーツタイプ)",
+    "components": []
+  },
+  {
+    "request_no": "#5325",
+    "hinmei": "プリーツドライヤー用フィルター PPS h300 (ハニカムミニプリーツタイプ)",
+    "components": []
+  },
+  {
+    "request_no": "#5326",
+    "hinmei": "IF400-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5327",
+    "hinmei": "5F410-0600",
+    "components": [
+      {
+        "part_no": "EG10548"
+      }
+    ]
+  },
+  {
+    "request_no": "#5328",
+    "hinmei": "IF433-0600",
+    "components": [
+      {
+        "part_no": "KF20-208-1-1"
+      },
+      {
+        "part_no": "F478-053311"
+      },
+      {
+        "part_no": "F478-053312"
+      },
+      {
+        "part_no": "IF433-124"
+      },
+      {
+        "part_no": "IF433-102B"
+      }
+    ]
+  },
+  {
+    "request_no": "#5329",
+    "hinmei": "4F162-0545",
+    "components": []
+  },
+  {
+    "request_no": "#533",
+    "hinmei": "IF258-0600",
+    "components": []
+  },
+  {
+    "request_no": "#5330",
+    "hinmei": "4F162-0545",
+    "components": []
+  },
+  {
+    "request_no": "#5331",
+    "hinmei": "FE2-753-0",
+    "components": [
+      {
+        "part_no": "IF400-0753-100"
+      }
+    ]
+  },
+  {
+    "request_no": "#5332",
+    "hinmei": "IF-226-01",
+    "components": [
+      {
+        "part_no": "IF220-500-012"
+      },
+      {
+        "part_no": "MJT-005316-01"
+      }
+    ]
+  },
+  {
+    "request_no": "#5332A",
+    "hinmei": "",
+    "components": []
+  },
+  {
+    "request_no": "#5333",
+    "hinmei": "IF220F-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5334",
+    "hinmei": "6F127-1000",
+    "components": [
+      {
+        "part_no": "OM63G0016"
+      },
+      {
+        "part_no": "OM2032092"
+      },
+      {
+        "part_no": "OM2032080"
+      },
+      {
+        "part_no": "6F127-008"
+      }
+    ]
+  },
+  {
+    "request_no": "#5335",
+    "hinmei": "5F410-0600",
+    "components": []
+  },
+  {
+    "request_no": "#5336",
+    "hinmei": "5F410-0600",
+    "components": []
+  },
+  {
+    "request_no": "#5337",
+    "hinmei": "FE3-2000-OTF",
+    "components": [
+      {
+        "part_no": "IF426-2000"
+      }
+    ]
+  },
+  {
+    "request_no": "#5338",
+    "hinmei": "IF226-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5339",
+    "hinmei": "IF220-0500",
+    "components": []
+  },
+  {
+    "request_no": "#534",
+    "hinmei": "IF258-0150-021",
+    "components": []
+  },
+  {
+    "request_no": "#5340",
+    "hinmei": "IF220-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5341",
+    "hinmei": "MT040 15F210-0565",
+    "components": []
+  },
+  {
+    "request_no": "#5341A",
+    "hinmei": "",
+    "components": [
+      {
+        "part_no": "MT040"
+      },
+      {
+        "part_no": "MTE40"
+      },
+      {
+        "part_no": "MTF40"
+      },
+      {
+        "part_no": "MTEF40"
+      }
+    ]
+  },
+  {
+    "request_no": "#5342",
+    "hinmei": "4F142-0700",
+    "components": []
+  },
+  {
+    "request_no": "#5343",
+    "hinmei": "4F142-1020 内筒接着型",
+    "components": [
+      {
+        "part_no": "4F142-101A"
+      },
+      {
+        "part_no": "4F142-102A"
+      },
+      {
+        "part_no": "4F142-104-1020A"
+      },
+      {
+        "part_no": "4F142-007"
+      },
+      {
+        "part_no": "4F142-110A"
+      },
+      {
+        "part_no": "IF100-0500A"
+      },
+      {
+        "part_no": "4F142-1020"
+      },
+      {
+        "part_no": "IF000-BR"
+      },
+      {
+        "part_no": "NST4-2"
+      }
+    ]
+  },
+  {
+    "request_no": "#5344",
+    "hinmei": "SB-600-80S",
+    "components": [
+      {
+        "part_no": "IF104-401-0600"
+      },
+      {
+        "part_no": "IF104-002-0600"
+      },
+      {
+        "part_no": "IF104-004-0600"
+      },
+      {
+        "part_no": "IF104-007"
+      },
+      {
+        "part_no": "IF104-012"
+      },
+      {
+        "part_no": "IF104-0600"
+      },
+      {
+        "part_no": "166619-1"
+      },
+      {
+        "part_no": "CPN-2653254470"
+      },
+      {
+        "part_no": "SE-0672"
+      }
+    ]
+  },
+  {
+    "request_no": "#5345",
+    "hinmei": "IF253-0500TF",
+    "components": [
+      {
+        "part_no": "IF253-101"
+      },
+      {
+        "part_no": "IF220-102"
+      },
+      {
+        "part_no": "IF253-104-0500"
+      },
+      {
+        "part_no": "IF220-113"
+      },
+      {
+        "part_no": "IF220-111"
+      },
+      {
+        "part_no": "IF253-114"
+      },
+      {
+        "part_no": "IF000-BDS-1000"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF000-BR"
+      },
+      {
+        "part_no": "NST4-2"
+      },
+      {
+        "part_no": "E-6100"
+      },
+      {
+        "part_no": "E-616"
+      }
+    ]
+  },
+  {
+    "request_no": "#5346",
+    "hinmei": "IF253W-0500",
+    "components": [
+      {
+        "part_no": "IF253-001"
+      },
+      {
+        "part_no": "IF253-402-066W"
+      },
+      {
+        "part_no": "IF220-004-0500"
+      },
+      {
+        "part_no": "IF253-014"
+      },
+      {
+        "part_no": "IF253W-007-S"
+      },
+      {
+        "part_no": "IF000-007-DO"
+      },
+      {
+        "part_no": "08-10-1000-S"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF100M"
+      },
+      {
+        "part_no": "E-6100"
+      },
+      {
+        "part_no": "UR-328"
+      }
+    ]
+  },
+  {
+    "request_no": "#5347",
+    "hinmei": "5F192-1000",
+    "components": [
+      {
+        "part_no": "5F192-401-1000"
+      },
+      {
+        "part_no": "IF225-402-040"
+      },
+      {
+        "part_no": "5F192-004-1000"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "5F192-1000"
+      }
+    ]
+  },
+  {
+    "request_no": "#5348",
+    "hinmei": "IF100M-0500TF",
+    "components": [
+      {
+        "part_no": "IF100-001"
+      },
+      {
+        "part_no": "IF100M-402"
+      },
+      {
+        "part_no": "IF100-004-0500"
+      },
+      {
+        "part_no": "IF100-007A"
+      },
+      {
+        "part_no": "IF100-007B"
+      },
+      {
+        "part_no": "IF100-0500A"
+      },
+      {
+        "part_no": "IF100M-0500TF"
+      }
+    ]
+  },
+  {
+    "request_no": "#5349",
+    "hinmei": "4F247-1390",
+    "components": [
+      {
+        "part_no": "4F247-001"
+      },
+      {
+        "part_no": "4F247-001A"
+      },
+      {
+        "part_no": "4F247-002"
+      },
+      {
+        "part_no": "4F247-004-1390"
+      },
+      {
+        "part_no": "4F247-007"
+      },
+      {
+        "part_no": "4F247-1390"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF220-1000"
+      }
+    ]
+  },
+  {
+    "request_no": "#5349A",
+    "hinmei": "4F247-1390",
+    "components": [
+      {
+        "part_no": "4F247-1390"
+      }
+    ]
+  },
+  {
+    "request_no": "#535",
+    "hinmei": "IF269-0350",
+    "components": [
+      {
+        "part_no": "IF269-0350"
+      }
+    ]
+  },
+  {
+    "request_no": "#5350",
+    "hinmei": "IF253-0500TF",
+    "components": [
+      {
+        "part_no": "IF253-101"
+      },
+      {
+        "part_no": "IF220-102"
+      },
+      {
+        "part_no": "IF253-104-0500"
+      },
+      {
+        "part_no": "IF220-113"
+      },
+      {
+        "part_no": "IF220-111"
+      },
+      {
+        "part_no": "IF253-114"
+      },
+      {
+        "part_no": "IF000-BDS-1000"
+      },
+      {
+        "part_no": "IF220-0500"
+      }
+    ]
+  },
+  {
+    "request_no": "#5351",
+    "hinmei": "IF253-0500TF",
+    "components": []
+  },
+  {
+    "request_no": "#5352",
+    "hinmei": "IF220-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5353",
+    "hinmei": "IF253-0500TF",
+    "components": []
+  },
+  {
+    "request_no": "#5354",
+    "hinmei": "IF231A-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5355",
+    "hinmei": "FE2-913-0 (IF400-0913-100)",
+    "components": []
+  },
+  {
+    "request_no": "#5356",
+    "hinmei": "IF400D-0560",
+    "components": []
+  },
+  {
+    "request_no": "#5357",
+    "hinmei": "5F192-1000 (マクラ型) KF18-191",
+    "components": []
+  },
+  {
+    "request_no": "#5358",
+    "hinmei": "IF400B-0660",
+    "components": []
+  },
+  {
+    "request_no": "#5359",
+    "hinmei": "IF220F-0500",
+    "components": []
+  },
+  {
+    "request_no": "#536",
+    "hinmei": "IF220-1000A",
+    "components": []
+  },
+  {
+    "request_no": "#5360",
+    "hinmei": "IF-102 (IF100-24)",
+    "components": []
+  },
+  {
+    "request_no": "#5360A",
+    "hinmei": "",
+    "components": [
+      {
+        "part_no": "IF-102"
+      }
+    ]
+  },
+  {
+    "request_no": "#5361",
+    "hinmei": "4F162-0545",
+    "components": []
+  },
+  {
+    "request_no": "#5362",
+    "hinmei": "SA800-758 (IF104-0800)",
+    "components": []
+  },
+  {
+    "request_no": "#5363",
+    "hinmei": "SB-600-808 (IF104-0602新規モデル)",
+    "components": []
+  },
+  {
+    "request_no": "#5364",
+    "hinmei": "IF-116 (3-008050, KB1-017)",
+    "components": []
+  },
+  {
+    "request_no": "#5364A",
+    "hinmei": "",
+    "components": [
+      {
+        "part_no": "IF-116"
+      },
+      {
+        "part_no": "3-008050"
+      }
+    ]
+  },
+  {
+    "request_no": "#5365",
+    "hinmei": "IF-130 (3-008349)",
+    "components": []
+  },
+  {
+    "request_no": "#5365A",
+    "hinmei": "",
+    "components": [
+      {
+        "part_no": "IF-130"
+      },
+      {
+        "part_no": "3-008349"
+      }
+    ]
+  },
+  {
+    "request_no": "#5366",
+    "hinmei": "MT040 (5F210-0565)",
+    "components": []
+  },
+  {
+    "request_no": "#5367",
+    "hinmei": "KT066-BU (IF220FF-0274)",
+    "components": []
+  },
+  {
+    "request_no": "#5367A",
+    "hinmei": "KT066-BU",
+    "components": [
+      {
+        "part_no": "4"
+      },
+      {
+        "part_no": "3"
+      },
+      {
+        "part_no": "2"
+      },
+      {
+        "part_no": "1"
+      }
+    ]
+  },
+  {
+    "request_no": "#5368",
+    "hinmei": "IF100-0500",
+    "components": []
+  },
+  {
+    "request_no": "#5369",
+    "hinmei": "IF253-0500",
+    "components": []
+  },
+  {
+    "request_no": "#537",
+    "hinmei": "IF-116 (3-008050, KB1-017)",
+    "components": []
+  },
+  {
+    "request_no": "#5370",
+    "hinmei": "IF125A-0850C",
+    "components": []
+  },
+  {
+    "request_no": "#5371",
+    "hinmei": "IF100M-0500TF",
+    "components": []
+  },
+  {
+    "request_no": "#5372",
+    "hinmei": "IF220FW-1000 首下パッキン",
+    "components": []
+  },
+  {
+    "request_no": "#5373",
+    "hinmei": "IF220FW-1500 首下パッキン",
+    "components": []
+  },
+  {
+    "request_no": "#5374",
+    "hinmei": "IF433B-0660TF EPDM",
+    "components": []
+  },
+  {
+    "request_no": "#5375",
+    "hinmei": "5F171-1060",
+    "components": [
+      {
+        "part_no": "5F171-501"
+      },
+      {
+        "part_no": "5F171-502"
+      },
+      {
+        "part_no": "5F171-004-1060"
+      },
+      {
+        "part_no": "IF100-0500A"
+      },
+      {
+        "part_no": "IF171-1060"
+      },
+      {
+        "part_no": "IF000-TS/M8"
+      },
+      {
+        "part_no": "5F183"
+      },
+      {
+        "part_no": "IF100M"
+      }
+    ]
+  },
+  {
+    "request_no": "#5376",
+    "hinmei": "IF220-1000B",
+    "components": [
+      {
+        "part_no": "IF220-001"
+      },
+      {
+        "part_no": "IF220-402-066"
+      },
+      {
+        "part_no": "IF220-004-1000"
+      },
+      {
+        "part_no": "IF220-007F"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "IF220"
+      },
+      {
+        "part_no": "E-6100"
+      },
+      {
+        "part_no": "KB-400"
+      }
+    ]
+  },
+  {
+    "request_no": "#5377",
+    "hinmei": "250A用 (5F213-0420)",
+    "components": [
+      {
+        "part_no": "5F213-801"
+      },
+      {
+        "part_no": "5F213-802"
+      },
+      {
+        "part_no": "5F213-104-0420"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF220FF"
+      },
+      {
+        "part_no": "3F200"
+      },
+      {
+        "part_no": "E-6500"
+      }
+    ]
+  },
+  {
+    "request_no": "#5377A",
+    "hinmei": "UF250",
+    "components": [
+      {
+        "part_no": "5F213-0440"
+      }
+    ]
+  },
+  {
+    "request_no": "#5378",
+    "hinmei": "FE3-1800-OTF (IF426=1800)",
+    "components": [
+      {
+        "part_no": "IF426-101A"
+      },
+      {
+        "part_no": "IF426-102A"
+      },
+      {
+        "part_no": "IF426-004-1800"
+      },
+      {
+        "part_no": "IF426-004-1800-A"
+      },
+      {
+        "part_no": "IF426-1800"
+      },
+      {
+        "part_no": "IF426-CP"
+      },
+      {
+        "part_no": "E-616"
+      }
+    ]
+  },
+  {
+    "request_no": "#5379",
+    "hinmei": "IF253-0500TF",
+    "components": [
+      {
+        "part_no": "IF253-101"
+      },
+      {
+        "part_no": "IF220-102"
+      },
+      {
+        "part_no": "IF253-104-0500"
+      },
+      {
+        "part_no": "IF220-113"
+      },
+      {
+        "part_no": "IF220-111"
+      },
+      {
+        "part_no": "IF253-114"
+      },
+      {
+        "part_no": "IF000-BDS-1000"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF000-BR/NST4-2"
+      },
+      {
+        "part_no": "KS-400"
+      },
+      {
+        "part_no": "TSE397-W"
+      },
+      {
+        "part_no": "K5400"
+      }
+    ]
+  },
+  {
+    "request_no": "#537A",
+    "hinmei": "IF-116",
+    "components": []
+  },
+  {
+    "request_no": "#538",
+    "hinmei": "4F-270-0800",
+    "components": [
+      {
+        "part_no": "4F270-001"
+      },
+      {
+        "part_no": "4F270-002"
+      },
+      {
+        "part_no": "IF412-004-0800"
+      },
+      {
+        "part_no": "4F270-004-0800"
+      },
+      {
+        "part_no": "KB400"
+      }
+    ]
+  },
+  {
+    "request_no": "#5380",
+    "hinmei": "IF220-1000B",
+    "components": [
+      {
+        "part_no": "IF220-001"
+      },
+      {
+        "part_no": "IF220-402-066"
+      },
+      {
+        "part_no": "IF220-004-1000"
+      },
+      {
+        "part_no": "IF220-007F"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "IF220-1000"
+      },
+      {
+        "part_no": "IF220"
+      },
+      {
+        "part_no": "E-6100"
+      },
+      {
+        "part_no": "KB400"
+      }
+    ]
+  },
+  {
+    "request_no": "#5381",
+    "hinmei": "IF220-0500",
+    "components": [
+      {
+        "part_no": "IF220-101"
+      },
+      {
+        "part_no": "IF220-102"
+      },
+      {
+        "part_no": "IF220-004-0500"
+      },
+      {
+        "part_no": "IF220-007A"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "IF220-0500"
+      },
+      {
+        "part_no": "E-616"
+      }
+    ]
+  },
+  {
+    "request_no": "#5382",
+    "hinmei": "IF220E-0500",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "E6100"
+      }
+    ]
+  },
+  {
+    "request_no": "#5383",
+    "hinmei": "IF400B-0560",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "50300180405801"
+      }
+    ]
+  },
+  {
+    "request_no": "#5384",
+    "hinmei": "IF220E-0500",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "E6100"
+      }
+    ]
+  },
+  {
+    "request_no": "#5385",
+    "hinmei": "FE3-1203-0TF",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "K5345"
+      },
+      {
+        "part_no": "K3874"
+      }
+    ]
+  },
+  {
+    "request_no": "#5386",
+    "hinmei": "3F370/S-0350",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "01804225"
+      }
+    ]
+  },
+  {
+    "request_no": "#5387",
+    "hinmei": "IF125C-0476",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "248386-1"
+      },
+      {
+        "part_no": "E6500"
+      }
+    ]
+  },
+  {
+    "request_no": "#5388",
+    "hinmei": "IF220-0500",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      }
+    ]
+  },
+  {
+    "request_no": "#5389",
+    "hinmei": "MT040",
+    "components": [
+      {
+        "part_no": "G2260-18"
+      },
+      {
+        "part_no": "2319244"
+      },
+      {
+        "part_no": "PN3213"
+      }
+    ]
+  },
+  {
+    "request_no": "#5389A",
+    "hinmei": "",
+    "components": []
+  },
+  {
+    "request_no": "#538A",
+    "hinmei": "4F270-0800",
+    "components": [
+      {
+        "part_no": "4F270-0800"
+      },
+      {
+        "part_no": "IF412-004-0800"
+      },
+      {
+        "part_no": "4F270-004-0800"
+      },
+      {
+        "part_no": "4F270-002"
+      },
+      {
+        "part_no": "4F270-001"
+      }
+    ]
+  }
+]

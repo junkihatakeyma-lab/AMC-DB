@@ -1,0 +1,71 @@
+[
+  {
+    "request_no": "11899",
+    "hinmei": "IF433B=0660 導電仕様",
+    "components": [
+      { "part_no": "IF433-001" },
+      { "part_no": "E-6100" },
+      { "part_no": "IF433B-004-0660 I-A" },
+      { "part_no": "IF433B-004-0660 OS" },
+      { "part_no": "IF433B-007A-S/EPDM" },
+      { "part_no": "IF433B-0660" }
+    ]
+  },
+  {
+    "request_no": "11900",
+    "hinmei": "IF220=1000 帯電防止",
+    "components": [
+      { "part_no": "IF253-001" },
+      { "part_no": "E-6100" },
+      { "part_no": "IF220-402-066" },
+      { "part_no": "UR-328" },
+      { "part_no": "IF220-004-1000-A" },
+      { "part_no": "IF220-007A" },
+      { "part_no": "IF220-1000" },
+      { "part_no": "IF220-009" }
+    ]
+  },
+  {
+    "request_no": "11901",
+    "hinmei": "IF220=0500",
+    "components": [
+      { "part_no": "IF220-001" },
+      { "part_no": "KB-400" },
+      { "part_no": "E-616" },
+      { "part_no": "IF220-402-066" },
+      { "part_no": "UR-328" },
+      { "part_no": "IF220-004-0500" },
+      { "part_no": "IF220-007D" },
+      { "part_no": "IF220-0500" },
+      { "part_no": "IF220-009" }
+    ]
+  },
+  {
+    "request_no": "4027再A",
+    "hinmei": "4F247-1390",
+    "components": []
+  },
+  {
+    "request_no": "###",
+    "hinmei": "[手書き] 〜ワイヤーカット用 B/T 製作〜",
+    "components": [
+      { "part_no": "UR-328" },
+      { "part_no": "E6000" }
+    ]
+  },
+  {
+    "request_no": "###A",
+    "hinmei": "放電加工機用エレメント試作耐圧試験",
+    "components": [
+      { "part_no": "6500" }
+    ]
+  },
+  {
+    "request_no": "###B",
+    "hinmei": "[手書き] wire cut. 開発",
+    "components": [
+      { "part_no": "E6000" },
+      { "part_no": "4F=340-300" }
+    ]
+  }
+]

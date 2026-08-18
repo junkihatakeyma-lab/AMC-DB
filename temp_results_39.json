@@ -1,0 +1,21 @@
+[
+  {"request_no": "1931", "hinmei": "[手書き] 5F192-1000 新(クマクラ型)", "components": []},
+  {"request_no": "1932", "hinmei": "[手書き] 5F192-0750 新(クマクラ型)", "components": []},
+  {"request_no": "1933", "hinmei": "[手書き] IF253E = 0500", "components": []},
+  {"request_no": "1934", "hinmei": "[手書き] IF412 = 0800", "components": []},
+  {"request_no": "1935", "hinmei": "[手書き] IF400W = 1200X(図 KF26-230-1)", "components": []},
+  {"request_no": "1936", "hinmei": "[手書き] IF400BW=0600", "components": []},
+  {"request_no": "1936A", "hinmei": "[手書き] 箱#1936分", "components": []},
+  {"request_no": "1937", "hinmei": "[手書き] IF412 = 0800", "components": []},
+  {"request_no": "1938", "hinmei": "[手書き] IF100M = 0500TF", "components": []},
+  {"request_no": "1939", "hinmei": "[手書き] 6F127-1000-T8.1", "components": []},
+  {"request_no": "1939A", "hinmei": "[手書き] #1939, #1940", "components": []},
+  {"request_no": "194", "hinmei": "[手書き] エンボスカロエ", "components": []},
+  {"request_no": "1940", "hinmei": "[手書き] 6F127-1000-T8.1", "components": []},
+  {"request_no": "1941", "hinmei": "[手書き] IF220FF = 1000", "components": []},
+  {"request_no": "1942", "hinmei": "[手書き] IF125A = 0400C", "components": []},
+  {"request_no": "1942A", "hinmei": "[手書き] 箱#1942", "components": []},
+  {"request_no": "1943", "hinmei": "[手書き] IF220F = 0500", "components": []},
+  {"request_no": "1944", "hinmei": "[手書き] FE3-2000-OTF (IF426=2000)", "components": [{"part_no": "IF426-CP"}]},
+  {"request_no": "1945", "hinmei": "[手書き] 4F280-0800", "components": []}
+]

@@ -1,0 +1,46 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "*.sqlite",
+      "*.py",
+      "*.bat",
+      "*.md",
+      "*.log",
+      "*.txt",
+      "*.zip",
+      ".git/**",
+      ".agents/**",
+      "venv/**",
+      "node_modules/**",
+      "**/*.exe",
+      "**/*.dll",
+      "**/*.so",
+      "__pycache__/**",
+      "chunk_*",
+      "parsed_*"
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/templates/index.html"
+      }
+    ]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}

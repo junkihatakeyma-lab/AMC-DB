@@ -191,6 +191,9 @@ async function performSearch() {
     const product = document.getElementById('searchProduct').value.trim();
     const partInputs = Array.from(document.querySelectorAll('.searchPartInput')).map(i => i.value.trim()).filter(v => v !== '');
     const part = partInputs.join(' ');
+    const masterInputs = Array.from(document.querySelectorAll('.searchMasterInput')).map(i => i.value.trim()).filter(v => v !== '');
+    const search_master = masterInputs.map(t => normalize(t));
+
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
 
@@ -226,6 +229,25 @@ async function performSearch() {
         let match_req = true;
         let match_product = true;
         let match_company = true;
+        
+        let match_master = true;
+        if (search_master.length > 0) {
+            if (!g.boms || g.boms.length === 0) {
+                match_master = false;
+            } else {
+                match_master = g.boms.some(b => {
+                    if (!b.components) return false;
+                    return search_master.every(token => {
+                        return b.components.some(c => {
+                            if (!c.master) return false;
+                            const masterStr = `${c.master.hinmei || ''} ${c.master.k_sunpo || ''} ${c.master.zaishitsu || ''}`;
+                            return normalize(masterStr).includes(token);
+                        });
+                    });
+                });
+            }
+        }
+
         let match_part = true;
         let match_q = true;
 
@@ -272,6 +294,22 @@ async function performSearch() {
                         });
                     }
                 }
+
+                if (search_master.length > 0) {
+                    if (g_out.boms) {
+                        g_out.boms = g_out.boms.filter(b => {
+                            if (!b.components) return false;
+                            return search_master.every(token => {
+                                return b.components.some(c => {
+                                    if (!c.master) return false;
+                                    const masterStr = `${c.master.hinmei || ''} ${c.master.k_sunpo || ''} ${c.master.zaishitsu || ''}`;
+                                    return normalize(masterStr).includes(token);
+                                });
+                            });
+                        });
+                    }
+                }
+
             }
             
             let totalBoms = g_out.boms ? g_out.boms.length : 0;
