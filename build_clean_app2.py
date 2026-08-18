@@ -365,7 +365,7 @@ function renderProductSearch(groups, tokens, resultsContainer, statsContainer) {
             group.boms.forEach(b => {
                 let compsHtml = '';
                 if (b.components && b.components.length > 0) {
-                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th><th>マスタ情報</th></tr>`;
                     if (Array.isArray(b.components)) {
                         b.components.forEach(c => {
                             let isRedText = c.role === '【特記・赤字】';
@@ -377,10 +377,11 @@ function renderProductSearch(groups, tokens, resultsContainer, statsContainer) {
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
                             </tr>`;
                         });
                     } else {
-                        compsHtml += `<tr><td colspan="3"><pre style="white-space:pre-wrap; font-size:11px; color:#666;">${escapeHtml(String(b.components))}</pre></td></tr>`;
+                        compsHtml += `<tr><td colspan="4"><pre style="white-space:pre-wrap; font-size:11px; color:#666;">${escapeHtml(String(b.components))}</pre></td></tr>`;
                     }
                     compsHtml += `</table></div>`;
                 }

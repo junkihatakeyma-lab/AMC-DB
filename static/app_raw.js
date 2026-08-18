@@ -356,7 +356,7 @@ function renderProductSearch(groups, tokens) {
             group.boms.forEach(b => {
                 let compsHtml = '';
                 if (b.components && b.components.length > 0) {
-                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th><th>マスタ情報</th></tr>`;
                     if (Array.isArray(b.components)) {
                         b.components.forEach(c => {
                             let isRedText = c.role === '【特記・赤字】';
@@ -368,10 +368,11 @@ function renderProductSearch(groups, tokens) {
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
                             </tr>`;
                         });
                     } else {
-                        compsHtml += `<tr><td colspan="3"><pre style="white-space:pre-wrap; font-size:11px; color:#666;">${escapeHtml(String(b.components))}</pre></td></tr>`;
+                        compsHtml += `<tr><td colspan="4"><pre style="white-space:pre-wrap; font-size:11px; color:#666;">${escapeHtml(String(b.components))}</pre></td></tr>`;
                     }
                     compsHtml += `</table></div>`;
                 }
@@ -578,8 +579,8 @@ function renderRequestSearch(groups, tokens) {
                             <table>
                                 <tr><th>品名</th><td>${highlight(r.hinmei, tokens)}</td><th>数量</th><td>${highlight(r.qty, tokens)}</td></tr>
                                 <tr><th>生地</th><td>${highlight(r.kiji, tokens)}</td><th>用途</th><td>${highlight(r.yoto, tokens)}</td></tr>
-                                <tr><th>仕様</th><td colspan="3">${highlight(r.spec, tokens)}</td></tr>
-                                <tr><th>備考</th><td colspan="3">${highlight(r.biko, tokens)}</td></tr>
+                                <tr><th>仕様</th><td colspan="4">${highlight(r.spec, tokens)}</td></tr>
+                                <tr><th>備考</th><td colspan="4">${highlight(r.biko, tokens)}</td></tr>
                             </table>
                         </div>
                         <div class="action-bar">
@@ -602,19 +603,31 @@ function renderRequestSearch(groups, tokens) {
             box.boms.forEach(b => {
                 let compsHtml = '';
                 if (b.components && b.components.length > 0) {
-                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                    compsHtml = `<div class="table-wrap"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th><th>マスタ情報</th></tr>`;
                     if (b.layout_ok) {
                         b.components.forEach(c => {
                             let isRedText = c.role === '【特記・赤字】';
                             let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
+                            
+                            let masterHtml = '';
+                            if (c.master && c.master.master_id) {
+                                let details = [];
+                                if (c.master.hinmei) details.push(`品名: ${c.master.hinmei}`);
+                                if (c.master.k_sunpo) details.push(`寸法: ${c.master.k_sunpo}`);
+                                if (c.master.zaishitsu) details.push(`材質: ${c.master.zaishitsu}`);
+                                masterHtml = `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + details.map(d => escapeHtml(d)).join('<br>') + `</div>`;
+                            }
+
                             compsHtml += `<tr style="${style}">
                                 <td>${highlight(c.role, tokens)}</td>
                                 <td>${createTag(c.part_no, 'part')}</td>
                                 <td>${highlight(c.note, tokens)}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
+                                <td>${masterHtml}</td>
                             </tr>`;
                         });
                     } else {
-                        compsHtml += `<tr><td colspan="3"><pre style="white-space:pre-wrap">${escapeHtml(b.components)}</pre></td></tr>`;
+                        compsHtml += `<tr><td colspan="4"><pre style="white-space:pre-wrap">${escapeHtml(b.components)}</pre></td></tr>`;
                     }
                     compsHtml += `</table></div>`;
                 }
@@ -795,7 +808,7 @@ function renderGlobalSearch(groups, tokens, state) {
         allBoms.forEach(b => {
             let compsHtml = '';
             if (b.components && b.components.length > 0) {
-                compsHtml = `<div class="table-wrap" style="margin-bottom:1rem"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th></tr>`;
+                compsHtml = `<div class="table-wrap" style="margin-bottom:1rem"><table><tr><th>役割</th><th>部品番号</th><th>仕様メモ</th><th>マスタ情報</th></tr>`;
                 b.components.forEach(c => {
                     let isRedText = c.role === '【特記・赤字】';
                     let style = isRedText ? 'color: #ff6b6b; font-weight: bold;' : '';
@@ -803,6 +816,7 @@ function renderGlobalSearch(groups, tokens, state) {
                         <td>${highlight(c.role, tokens)}</td>
                         <td>${createTag(c.part_no, 'part')}</td>
                         <td>${highlight(c.note, tokens)}</td>
+                                <td>${(c.master && c.master.master_id) ? `<div style="font-size: 0.85em; color: #2c3e50; background: #e8f4f8; padding: 4px; border-radius: 4px;">` + [`品名: ${c.master.hinmei||''}`, `寸法: ${c.master.k_sunpo||''}`, `材質: ${c.master.zaishitsu||''}`].filter(s=>!s.endsWith(': ')).map(s=>escapeHtml(s)).join('<br>') + `</div>` : ''}</td>
                     </tr>`;
                 });
                 compsHtml += `</table></div>`;
@@ -842,8 +856,8 @@ function renderGlobalSearch(groups, tokens, state) {
                         <table>
                             <tr><th>品名</th><td>${highlight(r.hinmei, tokens)}</td><th>数量</th><td>${highlight(r.qty, tokens)}</td></tr>
                             <tr><th>生地</th><td>${highlight(r.kiji, tokens)}</td><th>用途</th><td>${highlight(r.yoto, tokens)}</td></tr>
-                            <tr><th>仕様</th><td colspan="3">${highlight(r.spec, tokens)}</td></tr>
-                            <tr><th>備考</th><td colspan="3">${highlight(r.biko, tokens)}</td></tr>
+                            <tr><th>仕様</th><td colspan="4">${highlight(r.spec, tokens)}</td></tr>
+                            <tr><th>備考</th><td colspan="4">${highlight(r.biko, tokens)}</td></tr>
                         </table>
                     </div>
                     <div class="action-bar">
