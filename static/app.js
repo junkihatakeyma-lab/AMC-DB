@@ -407,14 +407,15 @@ async function performSearch() {
     const company = document.getElementById('searchCompany').value.trim();
     const q = document.getElementById('searchInput').value.trim();
 
-    const normalize = (text) => {
+    function normalize(text) {
         if (!text) return "";
         let t = String(text).toLowerCase();
+        // 全角英数字を半角に
         t = t.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
             return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
         });
         return t;
-    };
+    }
 
     const search_seiban = normalize(seiban);
     const search_req = normalize(req);
